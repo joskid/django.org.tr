@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{%block billboard%}Profiles{%endblock%}
+
+{% block title %}Profiles{% endblock %}
+
+{% block content %}
+		<select>
+			{% for city in cities %}
+				<option value="{{city.name}}">{{city.name}}</option>
+			{% endfor %}
+		</select>
+		{% for item in object_list %}
+			{% include 'profiles/profile_item.html' %}
+		{% endfor %}
+{% endblock %}

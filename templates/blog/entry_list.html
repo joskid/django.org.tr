@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %} {{ entry.title }} {% endblock %}
+	 
+{% block content %}
+<center><font face="cambria" size="4">{{ blog.title }}</font></center>
+<center>---------------------------</center>
+	
+	{% for entry in object_list %}
+	
+		<p><b><a href="{% url entry_detail blog_slug=entry.blog.slug,entry_slug=entry.slug %}">
+		<font face="verdana">{{ entry.title }}</font></a></b><br><br>
+		
+		<font face="tahoma" size=2>{{ entry.body|truncatewords:30 }}</font>
+		<br>
+		Devamı için <a href="{% url entry_detail blog_slug=entry.blog.slug,entry_slug=entry.slug %}"> Tıklayınız</a>
+		<br>
+		<b>Yayın Tarihi {{ entry.added|date:"d.m.Y - H:i" }}</b>
+		<br></p>
+		
+	{% endfor %}
+	
+{% endblock %}
+    
+{% block menu %}
+
+    <center><img src="/djangok.png" height="62" width="238" border=0></center>
+	
+   		{% for blog in blogs %}
+        	
+        	<font color="FFc757" face="tahoma">
+        	<li><a href="{% url blog_detail blog_slug=blog.slug %}" style="text-decoration:none">{{ blog.title }}</a></li>
+        	</font>
+	
+		{% endfor %}
+	 
+    <center><br><img src="/djangoky.png" height="62" width="238" border=0></center>
+   
+   		{% for entry in object_list %}
+    	
+    	    <li><a href="{% url entry_detail blog_slug=entry.blog.slug,entry_slug=entry.slug %}" style="text-decoration:none">
+    	    <font color="FFe761" face="tahoma" size=2>{{ entry.title }}</font></a></li>
+        	<font color="90ba9e" face="tahoma" size=2><br>
+        	Yayın Tarihi:{{ entry.added|date:"d.m.Y" }}</font><br><br>
+        	
+    	{% endfor %}
+    	
+{% endblock %}
+    

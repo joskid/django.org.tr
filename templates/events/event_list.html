@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{%block billboard%}Events{%endblock%}
+
+{% block title %}Events{% endblock %}
+
+{% block content %}
+		{% for item in object_list %}
+			{% include 'events/event_item.html' %}
+		{% endfor %}
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Yorumunu gözden geçir{% endblock %}
+
+{% block content %}
+
+	<br>
+	
+	<form action="../postfree/" method="post">
+	
+		{% if comment_form.has_errors %}
+
+			<p class="error"><strong>Ops! Hatalı yerler var ...</strong></p>
+
+		{% else %}
+		
+			{{ comment.comment|linebreaksbr }}
+			<br>
+			<em>{{ comment.submit_date|date:"H:i d.m.Y" }}</em>
+			<br><br>
+		
+			<input type="submit" id="id_submit" name="post" value="yorumu gönder" />
+		
+			<h4>veya düzelt ...</h4>
+
+		{% endif %}
+	
+		{% if comment_form.comment.errors %}{{ comment_form.comment.html_error_list }}{% endif %}
+
+		<p>{{ comment_form.person_name }}</p>
+		<p>{{ comment_form.comment }}</p>
+		<input type="hidden" name="options" value="{{ options }}" />
+		<input type="hidden" name="target" value="{{ target }}" />
+		<input type="hidden" name="gonzo" value="{{ hash }}" />
+		<input type="submit" id="id_preview" name="preview" value="düzeltmeleri kontrol et" />
+	
+	</form>
+
+{% endblock %}

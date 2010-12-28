@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %} {{ entry.title}} {% endblock %}
+
+{% block baslik %} 
+	<center><font face="cambria" size="4">Kategori Başlığı: {{ entry.blog.title}}</font></center>
+	<center>------------------------------------------------</center> 
+{% endblock %}
+
+{% block content %}
+	<p><b><a href="{% url entry_detail blog_slug=entry.blog.slug,entry_slug=entry.slug %}">
+	<font face="verdana">{{ entry.title }}</font></a></b><br><br>
+	<font face="tahoma" size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ entry.body}}</font>
+	<br>
+	<br><b>Yayın Tarihi {{ entry.added|date:"d.m.Y - H:i" }}</b>
+<br></p>
+{% load comments %}
+
+{% get_free_comment_list for blog.entry entry.id as comment_list %}
+	<font face="cambria" size="5">Yorumlar</font><br><br>
+{% for comment in comment_list %}
+	<font color="#487858" size="5">{{ comment.person_name }}</font>
+    <font color="#487858">{{ comment.submit_date|date:"d.m.Y |H:i" }}</font><br>
+	{{ comment.comment }}<br>
+	--------------------------------------------------------------------------------------------------------------------
+	<br>
+{% endfor %}
+
+{% free_comment_form for blog.entry entry.id with is_public yes %}
+
+
+{% endblock %}
+
+
+{% block menu %}
+    
+   	<center><img src="/djangodk.png" height="62" width="238" border=0></center>
+    
+		{% for blog in blogs %}
+        	
+       		<li><font face="tahoma" color="FFc757"><a href="{% url blog_detail blog_slug=blog.slug %}" style="text-decoration:none">{{ blog.title }}</a></li></font>
+		
+		{% endfor %}
+
+   	<center><br><img src="/djangoky.png" height="62" width="238" border=0></center>
+
+		{% for entry in entries %}
+        	
+   			<li><a href="{% url entry_detail blog_slug=entry.blog.slug,entry_slug=entry.slug %}" style="text-decoration:none">
+   			<font color="FFe761" face="tahoma" size=2>{{ entry.title }}</font></a></li>
+		
+			<font color="90ba9e" face="verdana" size=2><br>
+   			Yayın Tarihi:{{ entry.added|date:"d.m.Y" }}<br><br>
+   			</font>
+   		{% endfor %}
+    	
+    	
+{% endblock %}

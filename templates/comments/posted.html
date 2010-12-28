@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Yorum kaydedildi{% endblock %}
+
+{% block content %}
+
+	<br>
+	Katkın için teşekkürler...
+
+{% if object %}
+<ul>
+	<li><a href="{{ object.get_absolute_url }}">Sayfaya geri dön</a></li>
+</ul>
+{% endif %}
+
+{% endblock %}

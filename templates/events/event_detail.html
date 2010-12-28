@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{%block billboard%}Event Detay{%endblock%}
+
+{%block content%}
+	<h2>{{event.title}}</h2>
+	<p>{{event.description}}
+	<p>Tarih: {{event.start}}-{{event.end}}
+	<p>Adres: {{event.locations}}
+	<p>Sorumlu: {{event.user.username}}
+{%endblock%}
+
+    

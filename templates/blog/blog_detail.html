@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}{{ entry.title }}{% endblock %}
+
+{% block content_col1 %}
+
+	<div class="content first-content">
+		<p>
+			{{ entry.body|safe }}
+		</p>
+	</div>
+
+{% endblock %}
+
+{% block content_col2 %}
+
+	{% for blog in blogs %}
+		<h2>{{ blog.title }}</h2>
+		<ul>
+		{% for entry in blog.entry_set.all %}
+			<a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
+		{% endfor %}
+		</ul>
+	{% endfor %}
+
+{% endblock %}

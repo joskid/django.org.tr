@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{%block billboard%}Blogs{%endblock%}
+{% block title %}Blogs{% endblock %}
+
+{%block content%}
+	{% for blog in blogs %}
+		<h1>{{ blog.title }}</h1>
+		{% for entry in blog.entry_set.all %}
+			<a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
+		{% endfor %}
+	{% endfor %}
+{%endblock%}
+
+bok
