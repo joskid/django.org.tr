@@ -5,10 +5,12 @@ from django.contrib.auth.models import User
 from utils import slugify
 from datetime import datetime
 
+'''
 class Blog(models.Model):
     title = models.CharField(max_length = 200)
-    descripion = models.CharField(max_length = 200, blank=True, null=True)
+    description = models.CharField(max_length = 200, blank=True, null=True)
     keywords = models.CharField(max_length = 200, blank=True, null=True)
+    slug = models.SlugField(editable=False, unique=True)
     
     def __unicode__(self):
         return self.title
@@ -16,9 +18,18 @@ class Blog(models.Model):
     class Admin:
         pass
 
+    def save(self):
+        self.slug = slugify(self.title)
+        super(Blog, self).save()
+            
+    @models.permalink
+    def get_absolute_url(self):
+        return ('blog_detail', (),
+                {'blog_slug': self.slug})
 
+'''
 class Entry(models.Model):
-    blog = models.ForeignKey(Blog)
+    #blog = models.ForeignKey(Blog)
     title = models.CharField(max_length = 200)
     teaser = models.TextField(blank=True, null=True)
     body = models.TextField()
@@ -39,12 +50,9 @@ class Entry(models.Model):
             self.added = now
         self.slug = slugify(self.title)
         super(Entry, self).save()
-
-    @models.permalink
+   
+    @models.permalink        
     def get_absolute_url(self):
-        return ('blog_detail', (),
+        return ('entry_detail', (),
                 {'entry_slug': self.slug})
 
-    class Meta:
-        ordering = ['added']
-        verbose_name_plural = 'entries'

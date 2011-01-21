@@ -9,7 +9,7 @@
 	<meta name="ROBOTS" content="ALL" />
 	<meta name="keywords" content="Django, Python, Turkce, Turkiye, framework, open-source, web, programlama, uygulama" />
 	<meta name="description" content="{% block description %}{% endblock %}" />
-    <link rel="stylesheet" href="/base.css" type="text/css" />
+    <link rel="stylesheet" href="/css/base.css"/ type="text/css" />
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 </head>
 
@@ -21,18 +21,20 @@
 	<div id="body_head">
 		<h1 id="logo"><a href="/" title="Django-tr"><span>Django-tr</span></a></h1>
 		<ul id="nav-global">
-			<li id="nav-homepage"><a href="/">Home</a></li>
-			<li id="nav-homepage"><a href="{% url event_list %}">Events</a></li>
-			<li id="nav-download"><a href="{% url blog_list %}">Blogs</a></li>
-			<li id="nav-download"><a href="{% url profile_list %}">Profiles</a></li>
+
+            <li><a {% if is_home %} class="active" {% endif %} href="/">Ana Sayfa</a></li>
+            <li><a {% if is_events %} class="active" {% endif %} href="{% url event_list %}">Etkinlikler</a></li>
+            <li><a {% if is_blog %} class="active" {% endif %} href="{% url entry_list %}">Blog</a></li>
+            <li><a {% if is_profile %} class="active" {% endif %} href="{% url profile_list %}">Djangocular</a></li>
+
 		</ul>
 	</div>
 
 	<div id="billboard">
 		<h2>
 			{%block billboard%}
-			Zamanı sınırlı mükemmelliyetçiler için web uygulamaları geliştirme platformu
-			<span>Django daha iyi web uygulamalarını daha kısa zamanda ve daha az kodla geliştirmenize yardımcı olur</span>
+			Zamanƒ± sƒ±nƒ±rlƒ± m√ºkemmelliyet√ßiler i√ßin web uygulamalarƒ± geli≈ütirme platformu
+			<span>Django daha iyi web uygulamalarƒ±nƒ± daha kƒ±sa zamanda ve daha az kodla geli≈ütirmenize yardƒ±mcƒ± olur</span>
 			{%endblock%}
 		</h2>
 	</div>
@@ -46,10 +48,16 @@
 
 	<div id="footer">
 		<p>
-			Django <a href="http://www.ljworld.com">Lawrence Journal-World</a>'ün tescilli markasıdır.
+			Django <a href="http://www.ljworld.com">Lawrence Journal-World</a>'√ºn tescilli markasƒ±dƒ±r.
             Django resmi sitesine <a href="http://www.djangoproject.com" title="Django resmi web sitesi"
-            >buradan</a> ulaşabilirsiniz.
+            >buradan</a> ula≈üabilirsiniz.
+			 
         </p>
+        <p>
+        
+        	<a href="http://www.teknolab.org">Iletisim</a>
+       	</p>
+        
 	</div>
 </div>
 

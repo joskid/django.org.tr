@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     (r'^$', 'index.views.index'),
     (r'^blog/', include('blog.urls')),
+    (r'^websites/', include('websites.urls')),
     (r'^events/', include('events.urls')),
     (r'^profile/', include('profiles.urls')),
 

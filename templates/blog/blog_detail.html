@@ -1,18 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ entry.title }}{% endblock %}
-
-{% block content_col1 %}
-
-	<div class="content first-content">
-		<p>
-			{{ entry.body|safe }}
-		</p>
-	</div>
-
-{% endblock %}
-
-{% block content_col2 %}
+{% block content%}
 
 	{% for blog in blogs %}
 		<h2>{{ blog.title }}</h2>

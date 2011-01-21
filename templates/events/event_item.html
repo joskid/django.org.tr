@@ -1,5 +1,11 @@
 
-    <h1><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h1>   
-	<p><span class="text_n">Tarih: {{item.start}}-{{item.end}}</span></p>	
-    <p>Adres: {{item.locations}}</p></li>                                                                                                                  
-	
+<div class="fortune" id="f106">
+    <h3>
+        <a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
+        {{item.start}}-{{item.end}}
+    </h3>
+    <p>{{item.teaser}}
+    <dl class="irc"><dt style="color: rgb(207, 207, 207); "> Adres:</dt><dd> {{item.locations}}</dd></dl>
+    <dl class="irc"><dt style="color: rgb(207, 207, 207); "> Düzenleyen:</dt><dd> <a href="{{item.user.profile_set.all.0.get_absolute_url}}">{{item.user.profile_set.all.0.name}}</a></dd></dl>
+    
+</div>

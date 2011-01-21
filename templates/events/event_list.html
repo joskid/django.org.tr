@@ -1,10 +1,28 @@
 {% extends "base.html" %}
-{%block billboard%}Events{%endblock%}
+{%block billboard%}Etkinlikler{%endblock%}
 
-{% block title %}Events{% endblock %}
+{% block title %}Etkinlikler{% endblock %}
 
 {% block content %}
-		{% for item in object_list %}
-			{% include 'events/event_item.html' %}
+	<div id="content-main">
+			
+			{% for item in object_list %}
+				{% include 'events/event_item.html' %}
+			{% endfor %}
+	</div>
+	<div class="sidebar" id="content-related">
+      
+		<h2>Etkinliklerimize katılmak için</h2>
+		<p>
+		    Bizimle <a href="www.teknolab.org">iletişime</a> gecin.
+		</p>
+		
+
+    	{% for item in object_list %}
+	        <li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></li>
+		    <p>{{item.start}}</p>
+	        </li>
 		{% endfor %}
+    </div>
+    
 {% endblock %}

@@ -83,7 +83,9 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.core.context_processors.auth",
                                "django.core.context_processors.i18n",
                                "django.core.context_processors.media",
                                "django.core.context_processors.request",
-                               "context_processors.current_site")
+                               "context_processors.current_site",
+                               "context_processors.current_page"
+)
 
 
 INSTALLED_APPS = (
@@ -98,4 +100,5 @@ INSTALLED_APPS = (
     'blog',
     'events',
     'profiles',
+    'websites',
 )

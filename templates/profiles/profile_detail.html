@@ -1,9 +1,50 @@
+{% extends "base.html" %}
 {% load thumbnail %}
-{% block content %}
-	<h1><a href="{{ item.get_absolute_url }}">{{item.name}}</a></h1>
-	<img src="{% thumbnail item.photo 180x180 crop="smart" %}">
-    <p>Genel Bilgi: {{item.about}}</p>                                                                                                                 
-    <p>Web Sitesi: {{item.url}}</p>                                                                                                                  
-    <p>Hakkinda: {{item.about}}</p>
-	<p>Sehir: {{item.city}}</p>                                                                                                                    
-{% endblock %}
+{%block billboard%}Djangocular{%endblock%}
+
+{% block title %}Djangocular{% endblock %}
+
+
+{%block content%}
+	<div id="content-main">
+		<h1>Profil Detayı</h1>
+		<div class="content first-content">
+		    
+		    <ul class="linklist ">
+		        <li id="david-larlet">
+		            <h3>		                
+		                <a href="{{ profile.get_absolute_url }}">{{profile.name}}</a>		                
+						<br><img src="{% thumbnail profile.photo 180x180 crop="smart" %}"></br>
+		            </h3>
+		            <div class="bio">
+		            	    <p>Genel Bilgi: {{profile.about}}</p>                                                                                                                 
+				   			<p>Hakkında: {{profile.about}}</p>
+				   			{% if profile.url %}
+					   			<p>Web Sitesi: <a href="{{profile.url}}">{{profile.url}}</a></p>   
+					   		{%endif%}                                                                                                               				   			
+		            </div>
+		            <div class="bio">
+		            	<p>Şehir: {{profile.city}}</p>  		            	
+		            </div>
+		        </li>
+		    </ul>
+		    
+		</div>
+	</div>
+	<div class="sidebar" id="content-related">
+      
+		<h2>Siz de Katılın</h2>
+		<p>
+		    Django dünyasına siz de katkıda bulunmak istiyorsanız. <a href="#">Tıklayın.</a>
+		</p>
+
+	<h2>Yazdıkları</h2>
+	{% for entry in entries %}
+		<li>
+			<a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
+	        <p>{{ entry.teaser }}</p>			            
+		</li>
+	{% endfor %}   
+    </div>
+    
+{%endblock%}

@@ -1,49 +1,45 @@
 {% extends "base.html" %}
+{%block billboard%}Blog{%endblock%}
+{% block title %}Blog{% endblock %}
 
-{% block title %} {{ entry.title }} {% endblock %}
-	 
-{% block content %}
-<center><font face="cambria" size="4">{{ blog.title }}</font></center>
-<center>---------------------------</center>
-	
-	{% for entry in object_list %}
-	
-		<p><b><a href="{% url entry_detail blog_slug=entry.blog.slug,entry_slug=entry.slug %}">
-		<font face="verdana">{{ entry.title }}</font></a></b><br><br>
+{%block content%}
+	<div id="content-main">
+		<h1>Yazılar</h1>
+		<div class="content first-content">
+		    <h2 class="deck">Son Eklenen Yazılar</h2>
+		    
+		    <ul class="linklist ">
+		    	{% for entry in entries %}
+			        <li id="david-larlet">
+			            <h3>		                
+			                <a title="{{entry.user.profile_set.name}}" href="{{ entry.get_absolute_url }}">		                
+			                {{ entry.title }}		                
+			                </a>		                
+			            </h3>
+			            <div class="bio">{{ entry.body|linebreaksbr }}</div>
+			            <div class="bio">Tarih:{{ entry.added }}</div>
+			            <p>Ekleyen: <a href="{{entry.user.profile_set.all.0.get_absolute_url}}">{{entry.user.profile_set.all.0.name}}</a></p>			            
+			        </li>
+				{% endfor %}    
+		    </ul>
+		    
+		</div>
+	</div>
+	<div class="sidebar" id="content-related">
+      
+		<h2>Siz de Katılın</h2>
+		<p>
+		    Django dünyasına siz de katkıda bulunmak istiyorsanız. <a href="#">Tıklayın.</a>
+		</p>
 		
-		<font face="tahoma" size=2>{{ entry.body|truncatewords:30 }}</font>
-		<br>
-		Devamı için <a href="{% url entry_detail blog_slug=entry.blog.slug,entry_slug=entry.slug %}"> Tıklayınız</a>
-		<br>
-		<b>Yayın Tarihi {{ entry.added|date:"d.m.Y - H:i" }}</b>
-		<br></p>
-		
-	{% endfor %}
-	
-{% endblock %}
-    
-{% block menu %}
 
-    <center><img src="/djangok.png" height="62" width="238" border=0></center>
-	
-   		{% for blog in blogs %}
-        	
-        	<font color="FFc757" face="tahoma">
-        	<li><a href="{% url blog_detail blog_slug=blog.slug %}" style="text-decoration:none">{{ blog.title }}</a></li>
-        	</font>
-	
+    	{% for entry in entries %}
+	        <li><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></li>
+	        <p>{{ entry.teaser }}.</p>			            
+	        </li>
 		{% endfor %}
-	 
-    <center><br><img src="/djangoky.png" height="62" width="238" border=0></center>
-   
-   		{% for entry in object_list %}
-    	
-    	    <li><a href="{% url entry_detail blog_slug=entry.blog.slug,entry_slug=entry.slug %}" style="text-decoration:none">
-    	    <font color="FFe761" face="tahoma" size=2>{{ entry.title }}</font></a></li>
-        	<font color="90ba9e" face="tahoma" size=2><br>
-        	Yayın Tarihi:{{ entry.added|date:"d.m.Y" }}</font><br><br>
-        	
-    	{% endfor %}
-    	
-{% endblock %}
+    </div>
     
+{%endblock%}
+
+

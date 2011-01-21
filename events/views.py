@@ -17,7 +17,8 @@ def event_list(request):
 def event_detail(request, year, month, day, slug):
     event = get_object_or_404(Event, start__year=year, start__month=month,
                               start__day=day, slug=slug)
-
+    events = Event.objects.all().order_by('-start')
     return render_to_response('events/event_detail.html',
-                              {'event': event},
+                              {'event': event,
+                               'events': events},
                                context_instance=RequestContext(request))

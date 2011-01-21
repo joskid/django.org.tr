@@ -8,7 +8,7 @@ from utils import slugify
 
 
 class City(models.Model):
-    name = models.CharField(max_length = 50 , unique = True)
+    name = models.CharField(max_length = 50)
 
     def __unicode__(self):
         return self.name
@@ -30,3 +30,9 @@ class Profile(models.Model):
     def save(self, **kwargs):
         self.slug = slugify(self.user.username)
         super(Profile, self).save(**kwargs)
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('profile_detail', (),
+                {'profile_slug' : self.slug})
+        

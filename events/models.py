@@ -6,6 +6,7 @@ from utils import slugify
 
 class Event(models.Model):
     title = models.CharField(max_length=250)
+    teaser = models.CharField(max_length=250)
     description = models.TextField('Açıklama', blank=True, null=True)
     start = models.DateTimeField('Başlangıç zamanı', db_index=True)
     end = models.DateTimeField('Bitiş zamanı', blank=True, null=True)

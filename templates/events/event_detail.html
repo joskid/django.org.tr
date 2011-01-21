@@ -1,13 +1,33 @@
 {% extends "base.html" %}
 
-{%block billboard%}Event Detay{%endblock%}
+{%block billboard%}Etkinlik Detayı{%endblock%}
 
 {%block content%}
-	<h2>{{event.title}}</h2>
-	<p>{{event.description}}
-	<p>Tarih: {{event.start}}-{{event.end}}
-	<p>Adres: {{event.locations}}
-	<p>Sorumlu: {{event.user.username}}
-{%endblock%}
+	<div id="content-main">
 
-    
+		<div class="fortune" id="f106">
+		    <h3>
+		        <a href="{{ event.get_absolute_url }}">{{ event.title }}</a>
+		        {{event.start}}-{{event.end}}
+		    </h3>
+		    <dl class="irc"><dt style="color: rgb(207, 207, 207); "> Aciklama:</dt><dd> {{event.description|linebreaksbr}}</dd></dl>
+		    <dl class="irc"><dt style="color: rgb(207, 207, 207); "> Adres:</dt><dd> {{event.locations}}</dd></dl>
+		    <dl class="irc"><dt style="color: rgb(207, 207, 207); "> Yetkili:</dt><dd> <a href="{{event.user.profile_set.all.0.get_absolute_url}}">{{event.user.profile_set.all.0.name}}</a></dd></dl>
+		    
+		</div>   
+	</div>   
+	<div class="sidebar" id="content-related">
+      
+		<h2>Etkinliklerimize katılmak için</h2>
+		<p>
+		    Bizimle <a href="www.teknolab.org">iletişime</a> gecin.
+		</p>
+		
+
+    	{% for event in events %}
+	        <li><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></li>
+		    <p>{{event.start}}</p>
+	        </li>
+		{% endfor %}
+    </div>
+{%endblock%}

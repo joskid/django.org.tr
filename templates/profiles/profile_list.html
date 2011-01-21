@@ -1,15 +1,52 @@
 {% extends "base.html" %}
-{%block billboard%}Profiles{%endblock%}
+{%block billboard%}Djangocular{%endblock%}
 
-{% block title %}Profiles{% endblock %}
+{% block title %}Dajngocular{% endblock %}
 
 {% block content %}
-		<select>
-			{% for city in cities %}
-				<option value="{{city.name}}">{{city.name}}</option>
-			{% endfor %}
-		</select>
-		{% for item in object_list %}
-			{% include 'profiles/profile_item.html' %}
-		{% endfor %}
+
+	<div id="content-main">
+		<h1>		
+			<form name="city_form" id="city_form">
+				Şehirler:
+				<select name="city" onchange="this.form.submit();">
+					<option value="0">------------</option>
+					{% for city in cities %}
+						<option value="{{city.id}}" {% if city.id|stringformat:"s" == request.GET.city%}selected{% endif %}>{{city.name}}</option>
+					{% endfor %}
+				</select>
+			</form>		
+		</h1>
+		<div class="content first-content">
+
+			<ul class="linklist ">
+		
+				{% for item in object_list %}
+					{% include 'profiles/profile_item.html' %}
+				{% endfor %}
+				
+			</ul>
+		</div>
+		
+	</div>
+
+
+	<div class="sidebar" id="content-related">
+      
+		<h2>Siz de Katılın</h2>
+		<p>
+		    Django dünyasına siz de katkıda bulunmak istiyorsanız. <a href="#">Tıklayın.</a>
+		</p>
+			
+		<h2>Katılımcılar</h2>
+		
+			{% for item in object_list %}
+				<li>
+					<a href="{{ item.get_absolute_url }}">{{ item.name }}</a>
+			        <p>{{ item.city }}</p>			            
+				</li>
+			{% endfor %}   
+    </div>	
 {% endblock %}
+
+
