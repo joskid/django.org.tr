@@ -24,6 +24,11 @@ LANGUAGE_CODE = 'tr'
 
 SITE_ID = 1
 
+DEFAULT_FROM_EMAIL = 'Django <django@django.org.tr>'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_SUBJECT_PREFIX = '[django-tr] '
+
+
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
 USE_I18N = True

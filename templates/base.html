@@ -42,22 +42,29 @@
 	<div id="columnwrap">
 		{% block content %}
 		{% endblock %}
+		
+    <div class="sidebar" id="content-related">
+        
+      {% block sidebar%}
+        <h2>Siz de katılın</h2>
+        <p>
+            Kendinizi Django dünyasında görüyorsanız <a href="#">kayıt</a> olun, profilinizi oluşturun.
+        </p>
+      {% endblock %}
+    </div>
+  <div class="cale"></div>
 	</div>
 
-	<div class="cale"></div>
 
 	<div id="footer">
 		<p>
-			Django <a href="http://www.ljworld.com">Lawrence Journal-World</a>'√ºn tescilli markasƒ±dƒ±r.
-            Django resmi sitesine <a href="http://www.djangoproject.com" title="Django resmi web sitesi"
-            >buradan</a> ula≈üabilirsiniz.
-			 
-        </p>
-        <p>
-        
-        	<a href="http://www.teknolab.org">Iletisim</a>
-       	</p>
-        
+			Django, Django Software Foundation'ın tescilli markasıdır.
+      Django resmi sitesine <a href="http://www.djangoproject.com" title="Django resmi web sitesi"
+      >buradan</a> ulaşabilirsiniz.
+    </p>
+    <p>
+    	<a href="http://www.teknolab.org/#about">İletişim</a>
+   	</p>
 	</div>
 </div>
 

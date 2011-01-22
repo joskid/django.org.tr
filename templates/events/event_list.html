@@ -10,19 +10,21 @@
 				{% include 'events/event_item.html' %}
 			{% endfor %}
 	</div>
-	<div class="sidebar" id="content-related">
-      
-		<h2>Etkinliklerimize katılmak için</h2>
-		<p>
-		    Bizimle <a href="www.teknolab.org">iletişime</a> gecin.
-		</p>
-		
-
-    	{% for item in object_list %}
-	        <li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></li>
-		    <p>{{item.start}}</p>
-	        </li>
-		{% endfor %}
-    </div>
     
+{% endblock %}
+
+
+{% block sidebar %}
+    {{ block.super }}
+    <h2>Etkinliklerimize katılmak için</h2>
+    <p>
+        Bizimle <a href="http://teknolab.org/#about">iletişime</a> gecin.
+    </p>
+    
+
+      {% for item in object_list %}
+          <li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></li>
+        <p>{{item.start}}</p>
+          </li>
+    {% endfor %}
 {% endblock %}

@@ -25,21 +25,15 @@
 		    
 		</div>
 	</div>
-	<div class="sidebar" id="content-related">
-      
-		<h2>Siz de Katılın</h2>
-		<p>
-		    Django dünyasına siz de katkıda bulunmak istiyorsanız. <a href="#">Tıklayın.</a>
-		</p>
-		
-
-    	{% for entry in entries %}
-	        <li><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></li>
-	        <p>{{ entry.teaser }}.</p>			            
-	        </li>
-		{% endfor %}
-    </div>
     
 {%endblock%}
 
 
+{% block sidebar %}
+    {% for entry in entries %}
+        <li><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></li>
+        <p>{{ entry.teaser }}.</p>                  
+        </li>
+    {% endfor %}
+    {{ block.super }}
+{% endblock %}

@@ -9,90 +9,110 @@
 	<div id="content-main">
 		<h1> Django'yu keşfedin </h1>
 
-		<div class="home-content">
-			<div class="content">
-			    <p>
-			        Django est un framework  en <a href="http://www.python.org/">Python</a>.
-			    </p>
-			    <p>
-			        Puissant, il est  par des organisations comme la <a href="http://opensource.arc.nasa.gov/">Nasa</a>,
-			        <a href="http://projects.washingtonpost.com/congress/">le Washington Times</a> et a servi de base 
-			        <a href="http://code.google.com/intl/fr/appengine/">Google App Engine</a>.
-			    </p>
-			    <p>
-			        Mais Django est aussi  si vous  pas une multinationale ou une agence 
-			    </p>
-			    
-			    <ul class="linklist sitelist">
-			        
-			        <li><a title="Acces au site" href="http://coucoubebe.fr">Coucou  !</a></li>
-			        
-			        <li><a title="Acces au site" href="http://ipheeds.org/">iPheeds</a></li>
-			        
-			        <li><a title="Acces au site" href="http://www.bisonvert.net/">BisonVert.net</a></li>
-			        
-			        <li><a title="Acces au site" href="http://www.paperblog.fr/">Paperblog</a></li>
-			        
-			        <li><a title="Acces au site" href="http://www.slubman.info/">Blog()</a></li>
-			        
-			    </ul>
-			    
-			    <p>
-			        <a class="more-about home-about" href="/djangosites/">Voir d'autres sites</a>
-			    </p>
-			</div>
-		</div>
-		<div class="home-content">
-			<div class="content">
-			    <p>
-			        Django Türkiye olarak gerçekleştireceğimiz son etkinlikler:
-			    </p>
-			    
-			    <ul class="linklist sitelist">
-			    	{% for event in events %}
-				        <li><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></li>
-					{% endfor %}			        			    			        			        
-			    </ul>
-			    
-			    <p>
-			        <a class="more-about home-about" href="{%url event_list%}">Etkinlikler sayfasına gitmek için tıklayınız</a>
-			    </p>
-			</div>
-		</div>
-		<div class="home-content">
-			<div class="content">
-			    <p>
-			        Django Türkiye'de yayınlanan son yazılar:
-			    </p>
-			    
-			    <ul class="linklist sitelist">
-			    	{% for entry in entries %}
-				        <li><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></li>
-					{% endfor %}			        			    			        			        
-			    </ul>
-			    
-			    <p>
-			        <a class="more-about home-about" href="{%url entry_list%}">Yazılar sayfasına gitmek için tıklayınız</a>
-			    </p>
-			</div>
-		</div>		
-		
+    <table width="100%">
+      <tr>
+        <td width="33%" valign="top">
+          <div class="home-content">
+            <div class="content">
+                <p>
+                    Django est un framework  en <a href="http://www.python.org/">Python</a>.
+                </p>
+                <p>
+                    Puissant, il est  par des organisations comme la <a href="http://opensource.arc.nasa.gov/">Nasa</a>,
+                    <a href="http://projects.washingtonpost.com/congress/">le Washington Times</a> et a servi de base 
+                    <a href="http://code.google.com/intl/fr/appengine/">Google App Engine</a>.
+                </p>
+                <p>
+                    Mais Django est aussi  si vous  pas une multinationale ou une agence 
+                </p>
+                
+                <ul class="linklist sitelist">
+                    
+                    <li><a title="Acces au site" href="http://coucoubebe.fr">Coucou  !</a></li>
+                    
+                    <li><a title="Acces au site" href="http://ipheeds.org/">iPheeds</a></li>
+                    
+                    <li><a title="Acces au site" href="http://www.bisonvert.net/">BisonVert.net</a></li>
+                    
+                    <li><a title="Acces au site" href="http://www.paperblog.fr/">Paperblog</a></li>
+                    
+                    <li><a title="Acces au site" href="http://www.slubman.info/">Blog()</a></li>
+                    
+                </ul>
+                
+                <p>
+                    <a class="more-about home-about" href="/djangosites/">Voir d'autres sites</a>
+                </p>
+            </div>
+          </div>
+        </td>
+        <td width="33%" valign="top">
+          <div class="home-content">
+            <div class="content">
+                <p>
+                    Django Türkiye olarak gerçekleştireceğimiz son etkinlikler:
+                </p>
+                
+                <ul class="linklist sitelist">
+                  {% for event in events %}
+                      <li><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></li>
+                {% endfor %}                                                    
+                </ul>
+                
+                <p>
+                    <a class="more-about home-about" href="{%url event_list%}">Etkinlikler sayfasına gitmek için tıklayınız</a>
+                </p>
+            </div>
+          </div>
+        </td>
+        <td width="33%" valign="top">
+          <div class="home-content">
+            <div class="content">
+                <p>
+                    Django Türkiye'de yayınlanan son yazılar:
+                </p>
+                
+                <ul class="linklist sitelist">
+                  {% for entry in entries %}
+                      <li><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></li>
+                {% endfor %}                                                    
+                </ul>
+                
+                <p>
+                    <a class="more-about home-about" href="{%url entry_list%}">Yazılar sayfasına gitmek için tıklayınız</a>
+                </p>
+            </div>
+          </div>    
+        </td>
+      </tr>
+    </table>		
 
 	</div>
-	<div class="sidebar" id="content-related">
-      
-		<h2>Siz de Katılın</h2>
-		<p>
-		    Django dünyasına siz de katkıda bulunmak istiyorsanız. <a href="#">Tıklayın.</a>
-		</p>
-			
-		<h2>Django ile geliştirilmiş bazı siteler</h2>
-    	{% for site in sites %}
-	        <li><a href="{{ site.url }}">{{ site.name }}</a></li>
-	        <p>{{ site.about }}.</p>			            
-	        </li>
-		{% endfor %}
-    </div>
     
 {%endblock%}
 
+
+{% block sidebar%}
+    {{ block.super }}
+    <h2>İndirin</h2>
+    <ul class="linklist">
+        <li class="button-download">
+            <a href="http://www.djangoproject.com/download/1.2.4/tarball/">Son sürüm: <strong>1.2.4</strong></a>
+        </li>
+    </ul>
+
+    <p>
+        Diğer versiyonlara <a href="http://www.djangoproject.com/download/">buradan</a> ulaşabilirsiniz.
+    </p>
+
+    <p>
+        Açık kaynak kodlu, <a href="http://code.djangoproject.com/browser/django/trunk/LICENSE">BSD lisanslı</a>
+    </p>
+      
+    <h2>Django ile geliştirilmiş bazı siteler</h2>
+    {% for site in sites %}
+        <li><a href="{{ site.url }}">{{ site.name }}</a></li>
+        <p>{{ site.about }}.</p>                  
+        </li>
+    {% endfor %}
+{% endblock %}

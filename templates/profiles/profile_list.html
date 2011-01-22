@@ -29,24 +29,16 @@
 		</div>
 		
 	</div>
-
-
-	<div class="sidebar" id="content-related">
-      
-		<h2>Siz de Katılın</h2>
-		<p>
-		    Django dünyasına siz de katkıda bulunmak istiyorsanız. <a href="#">Tıklayın.</a>
-		</p>
-			
-		<h2>Katılımcılar</h2>
-		
-			{% for item in object_list %}
-				<li>
-					<a href="{{ item.get_absolute_url }}">{{ item.name }}</a>
-			        <p>{{ item.city }}</p>			            
-				</li>
-			{% endfor %}   
-    </div>	
 {% endblock %}
 
 
+{% block sidebar %}
+    <h2>Djangocular</h2>
+    {% for item in object_list %}
+      <li>
+        <a href="{{ item.get_absolute_url }}">{{ item.name }}</a>
+            <p>{{ item.city }}</p>                  
+      </li>
+    {% endfor %}   
+    {{ block.super }}
+{% endblock %}
