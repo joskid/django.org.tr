@@ -12,12 +12,6 @@ TEMPLATE_DIRS = (
 MEDIA_ROOT = os.path.join(SITE_ROOT, 'static')
 MEDIA_URL = '/'
 
-ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
-)
-
-MANAGERS = ADMINS
-
 TIME_ZONE = 'Europe/Istanbul'
 
 LANGUAGE_CODE = 'tr'
