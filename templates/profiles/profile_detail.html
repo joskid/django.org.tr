@@ -19,7 +19,6 @@
 		            <div class="bio">
 		            	    <p>{{profile.about|safe|linebreaksbr}}</p>
 		            </div>
-		            <div class="bio">
                   {% if profile.url %}
                     <p>Web Sitesi: <a href="{{profile.url}}">{{profile.url}}</a></p>   
                   {%endif%}
@@ -27,6 +26,17 @@
   		            	<p>Şehir: {{profile.city.name}}</p>  		            	
                   {%endif%}
 		            </div>
+                {% if profile.user.entry_set.all.0 %}
+                <div class="bio">
+                  <h2>Yazdıkları</h2>
+                  {% for entry in profile.user.entry_set.all %}
+                    <li>
+                      <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
+                          <p>{{ entry.teaser }}</p>                 
+                    </li>
+                  {% endfor %}   
+                </div>
+                {% endif %}
 		        </li>
 		    </ul>
 		    
@@ -34,16 +44,3 @@
 	</div>
     
 {%endblock%}
-
-{% block sidebar %}
-    {% if profile.user.entry_set.all.0 %}
-      <h2>Yazdıkları</h2>
-      {% for entry in profile.user.entry_set.all %}
-        <li>
-          <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
-              <p>{{ entry.teaser }}</p>                 
-        </li>
-      {% endfor %}   
-    {% endif %}
-    {{ block.super }}
-{% endblock %}
