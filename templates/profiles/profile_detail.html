@@ -14,11 +14,10 @@
 		        <li id="david-larlet">
 		            <h3>		                
 		                <a href="{{ profile.get_absolute_url }}">{{profile.name}}</a>		                
-						<br><img src="{% thumbnail profile.photo 180x180 crop="smart" %}"></br>
+						<br><img src="{% thumbnail profile.photo 240x240 %}"></br>
 		            </h3>
 		            <div class="bio">
-		            	    <p>Genel Bilgi: {{profile.about}}</p>                                                                                                                 
-				   			<p>Hakkında: {{profile.about}}</p>
+		            	    <p>{{profile.about|safe|linebreaksbr}}</p>
 				   			{% if profile.url %}
 					   			<p>Web Sitesi: <a href="{{profile.url}}">{{profile.url}}</a></p>   
 					   		{%endif%}                                                                                                               				   			
