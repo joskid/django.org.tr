@@ -10,7 +10,7 @@
 		    
 		    <ul class="linklist ">
 		        <li id="david-larlet">
-		            <div class="bio">{{ entry.body|linebreaksbr }}</div>
+		            <div class="bio">{{ entry.body|safe|linebreaksbr }}</div>
 		            <div class="bio">Ekleme Tarihi:{{ entry.added }} {%if entry.modified%} - Degistirilme Tarihi:{{ entry.modified }}{% endif %} </div>
 		            <p>Ekleyen: <a href="{{entry.user.profile_set.all.0.get_absolute_url}}">{{entry.user.profile_set.all.0.name}}</a></p>			            
 		        </li>
