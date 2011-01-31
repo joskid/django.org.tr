@@ -10,11 +10,11 @@
 		        <a href="{{ event.get_absolute_url }}">{{ event.title }}</a>
 		        {{event.start}}-{{event.end}}
 		    </h3>
-		    <dl class="irc"><dt style="color: rgb(207, 207, 207); "> Aciklama:</dt><dd> {{event.description|linebreaksbr}}</dd></dl>
+		    <dl class="irc"><dt style="color: rgb(207, 207, 207); "> Açıklama:</dt><dd> {{event.description|safe|linebreaksbr}}</dd></dl>
 		    <dl class="irc"><dt style="color: rgb(207, 207, 207); "> Adres:</dt><dd> {{event.locations}}</dd></dl>
-		    <dl class="irc"><dt style="color: rgb(207, 207, 207); "> Yetkili:</dt><dd> <a href="{{event.user.profile_set.all.0.get_absolute_url}}">{{event.user.profile_set.all.0.name}}</a></dd></dl>
+		    <dl class="irc"><dt style="color: rgb(207, 207, 207); "> Ekleyen:</dt><dd> <a href="{{event.user.profile.get_absolute_url}}">{{event.user.profile.name}}</a></dd></dl>
 		    
-		</div>   
+		</div>
 	</div>   
 	<div class="sidebar" id="content-related">
       
