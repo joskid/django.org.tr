@@ -15,16 +15,17 @@ class City(models.Model):
     
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, unique=True, db_index=True)
+    user = models.OneToOneField(User, verbose_name='Kullanıcı adı',
+                                unique=True, db_index=True)
     name = models.CharField('İsim', max_length=100, blank=True, null=True)
     about = models.TextField('Genel bilgi', blank=True, null=True)
     url = models.URLField('Web sitesi', blank=True, null=True)
-    city = models.ForeignKey('Şehir', City)
+    city = models.ForeignKey(City, verbose_name='Şehir')
     photo = models.ImageField('Profil fotoğrafı', upload_to='user_photo/%Y/%m/%d/',
                               blank=True, null=True)
 
     def __unicode__(self):
-        return self.user.username
+        return self.username
     
     @models.permalink
     def get_absolute_url(self):

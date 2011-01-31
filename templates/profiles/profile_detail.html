@@ -22,7 +22,10 @@
 		            <div class="bio">
                   {% if profile.url %}
                     <p>Web Sitesi: <a href="{{profile.url}}">{{profile.url}}</a></p>   
-                  {%endif%}                                                                                                                               
+                  {%endif%}
+                  {% if profile.city %}
+  		            	<p>Şehir: {{profile.city.name}}</p>  		            	
+                  {%endif%}
 		            </div>
 		        </li>
 		    </ul>
