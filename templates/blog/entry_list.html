@@ -16,9 +16,9 @@
 			                {{ entry.title }}		                
 			                </a>		                
 			            </h3>
-			            <div class="bio">{{ entry.body|linebreaksbr }}</div>
+			            <div class="bio">{{ entry.body|safe|linebreaksbr|truncatewords_html:100 }}</div>
 			            <div class="bio">Tarih:{{ entry.added }}</div>
-			            <p>Ekleyen: <a href="{{entry.user.profile_set.all.0.get_absolute_url}}">{{entry.user.profile_set.all.0.name}}</a></p>			            
+			            <div class="bio">Ekleyen: <a href="{{entry.user.profile.get_absolute_url}}">{{entry.user.profile.name}}</a></div>			            
 			        </li>
 				{% endfor %}    
 		    </ul>
