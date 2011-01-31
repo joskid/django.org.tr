@@ -8,9 +8,7 @@ from events.models import Event
 from django.views.generic.list_detail import object_list
 
 def event_list(request):
-
     queryset = Event.objects.all().order_by('-start')
-
     return object_list(request, queryset=queryset,
                        template_name = 'events/event_list.html')
 

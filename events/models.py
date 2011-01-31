@@ -9,7 +9,7 @@ class Event(models.Model):
     teaser = models.CharField(max_length=250)
     description = models.TextField('Açıklama', blank=True, null=True)
     start = models.DateTimeField('Başlangıç zamanı', db_index=True)
-    end = models.DateTimeField('Bitiş zamanı', blank=True, null=True)
+    end = models.DateTimeField('Bitiş zamanı', db_index=True)
     locations = models.TextField('Yer(ler)', max_length=250, blank=True)
     active = models.BooleanField('Geçerli', default=True)
     user = models.ForeignKey(User)
