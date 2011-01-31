@@ -21,10 +21,12 @@
 {%endblock%}
 
 {% block sidebar %}
+    <ul>
     {% for entry in entries %}
         <li><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></li>
         <p>{{ entry.teaser }}.</p>                  
         </li>
     {% endfor %}
+    </ul>
     {{ block.super }}
 {% endblock %}
