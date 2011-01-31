@@ -16,8 +16,9 @@
 			                {{ entry.title }}		                
 			                </a>		                
 			            </h3>
-			            <div class="bio">{{ entry.body|safe|linebreaksbr|truncatewords_html:100 }}</div>
-			            <div class="bio">Tarih:{{ entry.added }}</div>
+			            <div class="bio">{{ entry.body|safe|linebreaksbr|truncatewords_html:500 }}</div>
+                  <div class="bio"><a href="{{ entry.get_absolute_url }}">Yazının tamamı &raquo;</a></div>
+                  <div class="bio">Tarih: {{ entry.added }}</div>
 			            <div class="bio">Ekleyen: <a href="{{entry.user.profile.get_absolute_url}}">{{entry.user.profile.name}}</a></div>			            
 			        </li>
 				{% endfor %}    
