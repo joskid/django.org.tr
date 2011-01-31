@@ -36,9 +36,9 @@
 {%endblock%}
 
 {% block sidebar %}
-    {% if entries %}
+    {% if profile.user.entry_set.all.0 %}
       <h2>Yazdıkları</h2>
-      {% for entry in entries %}
+      {% for entry in profile.user.entry_set.all %}
         <li>
           <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
               <p>{{ entry.teaser }}</p>                 

@@ -26,8 +26,6 @@ def profile_list(request):
 
 def profile_detail(request, username):
     profile = get_object_or_404(Profile, user__username=username)
-    user = profile.user
-    entries = Entry.objects.filter(user=user)
     return render_to_response('profiles/profile_detail.html',
                               {'profile' : profile,
                                'entries' :entries},
