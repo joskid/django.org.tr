@@ -12,8 +12,7 @@ class Entry(models.Model):
     slug = models.SlugField(editable=False, unique=True)
     added = models.DateTimeField(editable = False, auto_now_add=True)
     modified = models.DateTimeField(editable = False, auto_now=True)
-    user = models.ForeignKey(User, related_name='blog_entry_set',
-                             blank=True, null=True)
+    user = models.ForeignKey(User, blank=True, null=True)
     author = models.CharField(max_length=100, blank=True, null=True)
 
     def __unicode__(self):
