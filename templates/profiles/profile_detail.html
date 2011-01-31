@@ -12,18 +12,17 @@
 		    
 		    <ul class="linklist ">
 		        <li id="david-larlet">
-		            <h3>		                
+		            <h3>
 		                <a href="{{ profile.get_absolute_url }}">{{profile.name}}</a>		                
 						<br><img src="{% thumbnail profile.photo 240x240 %}"></br>
 		            </h3>
 		            <div class="bio">
 		            	    <p>{{profile.about|safe|linebreaksbr}}</p>
-				   			{% if profile.url %}
-					   			<p>Web Sitesi: <a href="{{profile.url}}">{{profile.url}}</a></p>   
-					   		{%endif%}                                                                                                               				   			
 		            </div>
 		            <div class="bio">
-		            	<p>Şehir: {{profile.city}}</p>  		            	
+                  {% if profile.url %}
+                    <p>Web Sitesi: <a href="{{profile.url}}">{{profile.url}}</a></p>   
+                  {%endif%}                                                                                                                               
 		            </div>
 		        </li>
 		    </ul>
