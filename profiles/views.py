@@ -24,12 +24,10 @@ def profile_list(request):
 
 # Create your views here.
 
-def profile_detail(request, profile_slug):
-    profile = get_object_or_404(Profile, slug = profile_slug)
+def profile_detail(request, username):
+    profile = get_object_or_404(Profile, user__username=username)
     user = profile.user
-    entries = Entry.objects.filter(user = user)
-    for entry in entries:
-        print entry.title
+    entries = Entry.objects.filter(user=user)
     return render_to_response('profiles/profile_detail.html',
                               {'profile' : profile,
                                'entries' :entries},
