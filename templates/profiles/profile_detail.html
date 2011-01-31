@@ -14,29 +14,32 @@
 		        <li id="david-larlet">
 		            <h3>
 		                <a href="{{ profile.get_absolute_url }}">{{profile.name}}</a>		                
-						<br><img src="{% thumbnail profile.photo 240x240 %}"></br>
+        						<br><img src="{% thumbnail profile.photo 240x240 %}"></br>
 		            </h3>
 		            <div class="bio">
 		            	    <p>{{profile.about|safe|linebreaksbr}}</p>
 		            </div>
+                {% if profile.user.entry_set.all.0 %}
+                  <div class="bio">
+                    <h2>Yazdıkları</h2>
+                    <ul>
+                    {% for entry in profile.user.entry_set.all %}
+                      <li>
+                        <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
+                            <p>{{ entry.teaser }}</p>                 
+                      </li>
+                    {% endfor %}
+                    </ul>
+                  </div>
+                {% endif %}
+                <div class="bio">
                   {% if profile.url %}
                     <p>Web Sitesi: <a href="{{profile.url}}">{{profile.url}}</a></p>   
                   {%endif%}
                   {% if profile.city %}
-  		            	<p>Şehir: {{profile.city.name}}</p>  		            	
+  		            	<p>Şehir: {{profile.city.name}}</p>
                   {%endif%}
 		            </div>
-                {% if profile.user.entry_set.all.0 %}
-                <div class="bio">
-                  <h2>Yazdıkları</h2>
-                  {% for entry in profile.user.entry_set.all %}
-                    <li>
-                      <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
-                          <p>{{ entry.teaser }}</p>                 
-                    </li>
-                  {% endfor %}   
-                </div>
-                {% endif %}
 		        </li>
 		    </ul>
 		    
