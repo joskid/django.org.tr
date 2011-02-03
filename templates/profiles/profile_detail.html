@@ -14,7 +14,10 @@
 		        <li id="david-larlet">
 		            <h3>
 		                <a href="{{ profile.get_absolute_url }}">{{profile.name}}</a>		                
-        						<br><img src="{% thumbnail profile.photo 240x240 %}"></br>
+        						<br>
+        						{% if item.photo %}
+        						    <img src="{% thumbnail profile.photo 240x240 %}"></br>
+        						{% endif %}
 		            </h3>
 		            <div class="bio">
 		            	    <p>{{profile.about|safe|linebreaksbr}}</p>
