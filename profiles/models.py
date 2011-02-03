@@ -25,7 +25,7 @@ class Profile(models.Model):
                               blank=True, null=True)
 
     def __unicode__(self):
-        return self.username
+        return self.user.username
     
     @models.permalink
     def get_absolute_url(self):
