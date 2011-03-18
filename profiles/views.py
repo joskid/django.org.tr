@@ -43,7 +43,7 @@ def profile_form(request):
             profile = form.save()
             return HttpResponseRedirect(profile.get_absolute_url())
     else:
-        form = ProfileForm()
+        form = ProfileForm(instance=request.user.get_profile())
     return render_to_response('profiles/profile_form.html',
                               {'form': form},
                               context_instance=RequestContext(request))
