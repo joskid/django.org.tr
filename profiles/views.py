@@ -33,6 +33,7 @@ def profile_detail(request, username):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
+        exclude = 'city'
 
 @login_required
 def profile_form(request):
