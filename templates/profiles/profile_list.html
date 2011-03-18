@@ -6,7 +6,8 @@
 {% block content %}
 
 	<div id="content-main">
-		<h1>		
+	  {% comment %}
+		<h1>
 			<form name="city_form" id="city_form">
 				Şehirler:
 				<select name="city" onchange="this.form.submit();">
@@ -17,6 +18,7 @@
 				</select>
 			</form>		
 		</h1>
+		{% endcomment %}
 		<div class="content first-content">
 
 			<ul class="linklist ">
