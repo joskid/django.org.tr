@@ -31,14 +31,3 @@
 	</div>
 {% endblock %}
 
-
-{% block sidebar %}
-    <h2>Djangocular</h2>
-    {% for item in object_list %}
-      <li>
-        <a href="{{ item.get_absolute_url }}">{{ item.name }}</a>
-            <p>{{ item.city }}</p>                  
-      </li>
-    {% endfor %}   
-    {{ block.super }}
-{% endblock %}

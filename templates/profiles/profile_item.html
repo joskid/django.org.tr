@@ -13,9 +13,10 @@
   <div style="padding-top:8px;">
       <a href="{{ item.get_absolute_url }}">{{ item }}</a>
       <br/>
-      {% if item.city %}<em>{{ item.city }}</em>{% endif %}
+      {% if item.city %}<em>{{ item.city }}</em><br/>{% endif %}
       {% if item == request.user.get_profile %}
         <a style="font-size:9pt;" href="{% url profile_form %}">düzenle</a>
       {% endif %}
   </div>
+  <div style="clear:both"></div>
 </div>
