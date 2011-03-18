@@ -1,51 +1,48 @@
 {% extends "base.html" %}
-{% load thumbnail %}
-{%block billboard%}Djangocular{%endblock%}
+{% load thumbnail gravatar %}
 
-{% block title %}Djangocular{% endblock %}
+{%block billboard%}Profil Detayı{%endblock%}
+{% block title %}{{ profile }}{% endblock %}
 
 
 {%block content%}
 	<div id="content-main">
-		<h1>Profil Detayı</h1>
+		<h1>{{ profile }}</h1>
 		<div class="content first-content">
 		    
 		    <ul class="linklist ">
-		        <li id="david-larlet">
-		            <h3>
-		                <a href="{{ profile.get_absolute_url }}">{{profile.name}}</a>		                
-        						<br>
-        						{% if item.photo %}
-        						    <img src="{% thumbnail profile.photo 240x240 %}"></br>
-        						{% endif %}
-		            </h3>
-		            <div class="bio">
-		            	    <p>{{profile.about|safe|linebreaksbr}}</p>
-		            </div>
-                {% if profile.user.entry_set.all.0 %}
-                  <div class="bio">
-                    <h2>Yazdıkları</h2>
-                    <ul>
-                    {% for entry in profile.user.entry_set.all %}
-                      <li>
-                        <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
-                            <p>{{ entry.teaser }}</p>                 
-                      </li>
-                    {% endfor %}
-                    </ul>
-                  </div>
+            <div style="float:left; padding:4px;">
+                {% if profile.photo %}
+                   <img src="{% thumbnail profile.photo 240x240 %}">
+                {% else %}
+                   <img src="{% gravatar profile.user.email 240 "g" "mm" %}">
                 {% endif %}
-                <div class="bio">
-                  {% if profile.url %}
-                    <p>Web Sitesi: <a href="{{profile.url}}">{{profile.url}}</a></p>   
-                  {%endif%}
-                  {% if profile.city %}
-  		            	<p>Şehir: {{profile.city.name}}</p>
-                  {%endif%}
-		            </div>
-		        </li>
-		    </ul>
-		    
+            </div>
+            <div>
+            	    <p>{{profile.about|safe|linebreaksbr}}</p>
+            </div>
+            {% if profile.user.entry_set.all.0 %}
+              <div class="bio">
+                <h2>Yazıları</h2>
+                <ul>
+                {% for entry in profile.user.entry_set.all %}
+                  <li>
+                    <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
+                        <p>{{ entry.teaser }}</p>                 
+                  </li>
+                {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+            <div class="bio">
+              {% if profile.url %}
+                <p>Web Sitesi: <a href="{{profile.url}}">{{profile.url}}</a></p>   
+              {%endif%}
+              {% if profile.city %}
+	            	<p>Şehir: {{profile.city.name}}</p>
+              {%endif%}
+            </div>
+            <div style="clear:both"></div>
 		</div>
 	</div>
     

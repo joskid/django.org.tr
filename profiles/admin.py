@@ -7,5 +7,5 @@ class CityAdmin(admin.ModelAdmin):
 admin.site.register(City, CityAdmin)
 
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'name')
+    list_display = ('user', 'city')
 admin.site.register(Profile, ProfileAdmin)

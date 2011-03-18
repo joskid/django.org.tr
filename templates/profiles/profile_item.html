@@ -1,16 +1,21 @@
-{% load thumbnail %}
-{% block content %}
+{% load thumbnail gravatar %}
 
-	<li id="david-larlet">
-        <h3>		                
-            <a href="{{ item.get_absolute_url }}">{{item.name}}</a>		                
-			<br>
-			{% if item.photo %}
-			   <img src="{% thumbnail item.photo 120x120 %}"></br>
-			{% endif %}
-        </h3>
-        <div class="bio">
-			<p>Şehir: {{item.city}}</p>                                                                                                                                                                                                                            				   			
-   	    </div>
-                                                                                                                 
-{% endblock %}
+<div style="width:200px;">
+  <div style="float:left; padding:4px;">
+    <a href="{{ item.get_absolute_url }}">
+    {% if item.photo %}
+       <img src="{% thumbnail item.photo 60x60 %}">
+    {% else %}
+       <img src="{% gravatar item.user.email 60 "g" "mm" %}">
+    {% endif %}
+    </a>
+  </div>
+  <div style="padding-top:8px;">
+      <a href="{{ item.get_absolute_url }}">{{ item }}</a>
+      <br/>
+      {% if item.city %}<em>{{ item.city }}</em>{% endif %}
+      {% if item == request.user.get_profile %}
+        <a style="font-size:9pt;" href="{% url profile_form %}">düzenle</a>
+      {% endif %}
+  </div>
+</div>

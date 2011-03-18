@@ -5,8 +5,6 @@ from django.views.generic.simple import direct_to_template
 
 admin.autodiscover()
 
-
-
 urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     (r'^$', 'index.views.index'),
@@ -14,7 +12,8 @@ urlpatterns = patterns('',
     (r'^websites/', include('websites.urls')),
     (r'^events/', include('events.urls')),
     (r'^profile/', include('profiles.urls')),
-
+    
+    url(r'^', include('social_auth.urls')),
 )
 
 if settings.DEBUG:

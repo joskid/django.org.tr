@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block billboard %}{{ request.user.get_profile }}{% endblock %}
+{% block title %}{{ request.user.get_profile }}{% endblock %}
+
+{% block content %}
+  <div id="content-main">
+    <h1>Profil düzenleme</h1>
+    
+    <div class="content first-content">
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+        {{ form }}
+        </table>
+        <input type="submit" value="Kaydet">
+      </form>
+    </div>
+    
+  </div>
+{% endblock %}
