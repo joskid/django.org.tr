@@ -34,7 +34,6 @@ class Profile(models.Model):
         
 
 def create_profile(sender, instance, created, **kwargs):
-    print instance.first_name, instance.last_name
     if created:
         Profile.objects.create(user=instance)
 post_save.connect(create_profile, sender=User)
