@@ -30,18 +30,24 @@
         <td width="33%" valign="top">
           <div class="home-content">
             <div class="content">
-                <p>
-                    Django Türkiye etkinlikleri:
-                </p>
-                
+                <h2>Django Türkiye etkinlikleri</h2>
                 <ul class="linklist sitelist">
-                  {% for event in events %}
-                      <li><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></li>
+                {% for event in events %}
+                    <li><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></li>
                 {% endfor %}                                                    
                 </ul>
-                
                 <p>
                     <a class="more-about home-about" href="{%url event_list%}">Etkinlikler sayfasına gitmek için tıklayın</a>
+                </p>
+
+                <h2>Django Türkiye'de yayınlanan son yazılar</h2>
+                <ul class="linklist sitelist">
+                {% for entry in entries %}
+                    <li><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></li>
+                {% endfor %}                                                    
+                </ul>
+                <p>
+                    <a class="more-about home-about" href="{% url entry_list %}">Yazılar sayfasına gitmek için tıklayın</a>
                 </p>
             </div>
           </div>
@@ -49,19 +55,17 @@
         <td width="33%" valign="top">
           <div class="home-content">
             <div class="content">
-                <p>
-                    Django Türkiye'de yayınlanan son yazılar:
-                </p>
-                
-                <ul class="linklist sitelist">
-                  {% for entry in entries %}
-                      <li><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></li>
-                {% endfor %}                                                    
+                <h2>Django ile geliştirilmiş bazı siteler</h2>
+                <ul>
+                {% for site in sites %}
+                    <li><a href="{{ site.url }}">{{ site.name }}</a></li>
+                    <p>{{ site.about }}.</p>                  
+                    </li>
+                {% endfor %}
                 </ul>
-                
-                <p>
-                    <a class="more-about home-about" href="{%url entry_list%}">Yazılar sayfasına gitmek için tıklayın</a>
-                </p>
+                Ayrıca <a href="http://django.org.tr/">Django.org.tr</a> web sitesinin kodlarına 
+                <a href="https://github.com/teknolab/django.org.tr">GitHub</a>'dan ulaşabilir, 
+                dilerseniz katkıda bulunabilirsiniz.
             </div>
           </div>    
         </td>
@@ -89,11 +93,4 @@
     <p>
         Açık kaynak kodlu, <a href="http://code.djangoproject.com/browser/django/trunk/LICENSE">BSD lisanslı</a>
     </p>
-      
-    <h2>Django ile geliştirilmiş bazı siteler</h2>
-    {% for site in sites %}
-        <li><a href="{{ site.url }}">{{ site.name }}</a></li>
-        <p>{{ site.about }}.</p>                  
-        </li>
-    {% endfor %}
 {% endblock %}
