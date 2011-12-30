@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import os.path
 from local_settings import *
 
@@ -64,6 +63,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
    "django.core.context_processors.request",
    "context_processors.current_site",
    "context_processors.current_page",
+   "social_auth.context_processors.social_auth_by_type_backends"
 )
 
 
@@ -74,8 +74,12 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.admin',
+
+    # Third party applications
     'social_auth',
     'easy_thumbnails',
+
+    # Internal applications
     'blog',
     'events',
     'profiles',
@@ -83,28 +87,19 @@ INSTALLED_APPS = (
 )
 
 AUTHENTICATION_BACKENDS = (
-#    'social_auth.backends.twitter.TwitterBackend',
     'social_auth.backends.facebook.FacebookBackend',
-#    'social_auth.backends.google.GoogleOAuthBackend',
-#    'social_auth.backends.google.GoogleOAuth2Backend',
     'social_auth.backends.google.GoogleBackend',
-#    'social_auth.backends.yahoo.YahooBackend',
-#    'social_auth.backends.contrib.linkedin.LinkedinBackend',
-#    'social_auth.backends.contrib.LiveJournalBackend',
-#    'social_auth.backends.contrib.orkut.OrkutBackend',
-#    'social_auth.backends.OpenIDBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
-LOGIN_URL          = '/login-form/'
+LOGIN_URL = '/login-form/'
 LOGIN_REDIRECT_URL = '/'
-LOGIN_ERROR_URL    = '/login-error/'
-
+LOGIN_ERROR_URL = '/login-error/'
 
 SOCIAL_AUTH_ERROR_KEY = 'social_errors'
-SOCIAL_AUTH_COMPLETE_URL_NAME  = 'complete'
+SOCIAL_AUTH_COMPLETE_URL_NAME = 'complete'
 SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'associate_complete'
-
 SOCIAL_AUTH_DEFAULT_USERNAME = 'djangocu'
+SOCIAL_AUTH_ENABLED_BACKEND = ('google', 'facebook')
 
 AUTH_PROFILE_MODULE = 'profiles.Profile'
