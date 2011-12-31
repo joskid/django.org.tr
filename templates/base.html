@@ -8,9 +8,9 @@
 	<meta name="ROBOTS" content="ALL" />
 	<meta name="keywords" content="Django, Python, Turkce, Turkiye, framework, open-source, web, programlama, uygulama" />
 	<meta name="description" content="{% block description %}{% endblock %}" />
-  <link rel="stylesheet" href="/css/base.css"/ type="text/css" />
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ STATIC_URL}}css/base.css" type="text/css" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 </head>
 
 <body class="default">
@@ -42,7 +42,7 @@
 	<div id="columnwrap">
 		{% block content %}
 		{% endblock %}
-		
+
     <div class="sidebar" id="content-related">
       {% block sidebar%}
         {% if user.is_authenticated %}
@@ -60,9 +60,9 @@
                 Google veya Facebook kullanıcınızla giriş yapabilirsiniz
               </div>
               <div style="padding-top:6px;">
-                <a href="{% url begin backend="google" %}"><img src="/google.gif"></a>
+                <a href="{# url begin backend="google" #}"><img src="/google.gif"></a>
                 &nbsp;
-                <a href="{% url begin backend="facebook" %}"><img src="/facebook.gif"></a>
+                <a href="{# url begin backend="facebook" #}"><img src="/facebook.gif"></a>
               </div>
           </div>
         {% endif %}
