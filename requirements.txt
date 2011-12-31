@@ -1,5 +1,6 @@
 Django==1.3.1
 PIL==1.1.7
+South==0.7.3
 django-social-auth==0.6.1
 easy-thumbnails==1.0-alpha-21
 httplib2==0.7.2
