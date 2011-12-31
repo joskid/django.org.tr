@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
-import os.path
+from os import path
 from local_settings import *
 
-SITE_ROOT = os.path.dirname(__file__)
+SITE_ROOT = path.realpath(path.dirname(__file__))
+TEMPLATE_DIRS = (path.join(SITE_ROOT, 'templates'),)
 
-TEMPLATE_DIRS = (
-    os.path.join(SITE_ROOT, 'templates'),
-)
-
-MEDIA_ROOT = os.path.join(SITE_ROOT, 'static')
+MEDIA_ROOT = path.join(SITE_ROOT, 'static')
 MEDIA_URL = '/'
 
 TIME_ZONE = 'Europe/Istanbul'
@@ -78,6 +75,7 @@ INSTALLED_APPS = (
     # Third party applications
     'social_auth',
     'easy_thumbnails',
+    'south',
 
     # Internal applications
     'blog',
