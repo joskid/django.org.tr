@@ -61,7 +61,7 @@ a:visited{
 */
 #body_head{
     height:65px;
-    background-image:url("/background_dark_header_for_billboard.png");
+    background-image:url("../images/background_dark_header_for_billboard.png");
     background-position:top left;
     background-repeat:repeat-x;
 }
@@ -69,7 +69,7 @@ a:visited{
     margin:0 10px 0 10px;
     padding:5px 0 0 5px;
     height:59px;
-    background-image:url("/background_light_header_for_billboard.png");
+    background-image:url("../images/background_light_header_for_billboard.png");
     background-position:top left;
     background-repeat:repeat-x;
 }
@@ -79,7 +79,7 @@ a:visited{
     padding:0;
     width:151px;
     height:59px;
-    background-image:url("/logo.png");
+    background-image:url("../images/logo.png");
     background-position:top left;
     background-repeat:no-repeat;
 }
@@ -122,7 +122,7 @@ a:visited{
 #body_head li a.active,
 #body_head li a:hover{
     color:#d48722;
-    background-image:url("/background_navigation_items.png");
+    background-image:url("../images/background_navigation_items.png");
     background-position:top left;
     background-repeat:repeat-x;
 }
@@ -134,7 +134,7 @@ a:visited{
     margin:0;
     padding:14px 0 0 0;
     background-color:#92cc47;
-    background-image:url("/background_billboard_top.png");
+    background-image:url("../images/background_billboard_top.png");
     background-position:top left;
     background-repeat:repeat-x;
 }
@@ -144,7 +144,7 @@ a:visited{
     padding:0 0 14px 16px;
     font-size:18px;
     font-weight:bold;
-    background-image:url("/background_billboard_bottom.png");
+    background-image:url("../images/background_billboard_bottom.png");
     background-position:bottom left;
     background-repeat:repeat-x;
 }
@@ -171,7 +171,7 @@ a:visited{
     background-color:#f5f7ee;
     width:73%;
     float:left;
-    background-image:url("/vertical_green_dot.gif");
+    background-image:url("../images/vertical_green_dot.gif");
     background-position:top right;
     background-repeat:repeat-y;
 }
@@ -203,7 +203,7 @@ body.rest-document #content-main h1{
     margin:0;
     padding:0;
     background:white;
-    background-image:url("/vertical_green_dot.gif");
+    background-image:url("../images/vertical_green_dot.gif");
     background-position:top right;
     background-repeat:repeat-y;
 }
@@ -216,23 +216,23 @@ html > body #content-main{
 }
 #content-main div.content{
     color:#3f3f39;
-    background-image:url("/background_corpus.png");
+    background-image:url("../images/background_corpus.png");
     background-position:top left;
     background-repeat:repeat-x;
     margin:0 1px 0 0;
     padding:8px 15px 12px 15px;
 }
 body.rest-document #content-main div.content{
-    background-image:url("/background_corpus_without_dot.png");
+    background-image:url("../images/background_corpus_without_dot.png");
 }
 #content-main div.first-content{
     background-color:#f5f9f8;
-    background-image:url("/background_corpus_first-content.png");
+    background-image:url("../images/background_corpus_first-content.png");
     background-position:top left;
     background-repeat:repeat-x;
 }
 body.rest-document #content-main div.first-content{
-    background-image:url("/background_corpus_first-content_without_dot.png");
+    background-image:url("../images/background_corpus_first-content_without_dot.png");
 }
 
 #content-main div.content h2{
@@ -295,15 +295,15 @@ textarea.codedump { font-size:10px; color:#234f32; width:100%; background:#E0FFB
 }
 .admonition-philosophie {
     padding-left:65px;
-    background:url(/ktip.png) .8em .8em no-repeat;
+    background: url("../images/ktip.png") .8em .8em no-repeat;
 }
 .admonition-note {
     padding-left:65px;
-    background:url(/reminders.png) .8em .8em no-repeat;
+    background: url("../images/reminders.png") .8em .8em no-repeat;
 }
 .admonition-behind-the-scenes {
     padding-left:65px;
-    background:url(/misc.png) .8em .8em no-repeat;
+    background: url("../images/misc.png") .8em .8em no-repeat;
 }
 .admonition .last {
     margin-bottom:0 !important;
@@ -376,7 +376,7 @@ ul.linklist li h3,
 ul.linklist li a{
     display:block;
     padding:2px 4px 0 24px;
-    background-image:url("/link_doc.png");
+    background-image: url("../images/link_doc.png");
     background-position:1px 1px;
     background-repeat:no-repeat;
 }
@@ -384,7 +384,7 @@ ul.doclist li h3,
 ul.doclist li a{
     display:block;
     padding:2px 4px 0 24px;
-    background-image:url("/document.png");
+    background-image: url("../images/document.png");
     background-position:1px 1px;
     background-repeat:no-repeat;
 }
@@ -414,25 +414,25 @@ ul.linklist li p a{
 /* Divers liens avec icone */
 a.more-about{
     padding:0 16px 0 0;
-    background-image:url("/0111_arrow.gif");
+    background-image: url("../images/0111_arrow.gif");
     background-position:top right;
     background-repeat:no-repeat;
 }
 a.link-add{
     padding:0 0 0 16px;
-    background-image:url("/0051_plus.gif");
+    background-image: url("../images/0051_plus.gif");
     background-position:top left;
     background-repeat:no-repeat;
 }
 a.quick_link{
     padding:0 0 0 20px;
-    background-image:url("/0024_chevrons.gif");
+    background-image: url("../images/0024_chevrons.gif");
     background-position:2px center;
     background-repeat:no-repeat;
 }
 a.contributor_link{
     padding:0 0 0 20px;
-    background-image:url("/0181_1.gif");
+    background-image: url("../images/0181_1.gif");
     background-position:2px center;
     background-repeat:no-repeat;
 }
@@ -459,14 +459,14 @@ div.form-row label{
 div.form-row input{
     padding:2px;
     border:2px solid #cccccc;
-    background-image:url("/form.gif");
+    background-image: url("../images/form.gif");
     background-position:top left;
     background-repeat:repeat-x;
 }
 div.form-row textarea{
     padding:2px;
     border:2px solid #cccccc;
-    background-image:url("/area.gif");
+    background-image: url("../images/area.gif");
     background-position:top left;
     background-repeat:no-repeat;
 }
@@ -634,7 +634,7 @@ div.sidebar ul.linklist li.button-download a{
     padding:0 0 0 20px;
     height:16px;
     font-size:13px;
-    background-image:url("/0107_dl.gif");
+    background-image: url("../images/0107_dl.gif");
     background-position:2px 2px;
     background-repeat:no-repeat;
 }
@@ -654,7 +654,7 @@ div.sidebar ul.toc li a{
     margin:4px 0 0 0;
     padding:0 0 0 20px;
     font-size:13px;
-    background-image:url("/0024_chevrons.gif");
+    background-image: url("../images/0024_chevrons.gif");
     background-position:2px 2px;
     background-repeat:no-repeat;
 }
@@ -664,7 +664,7 @@ div.sidebar ul.toc ul{
     font-weight:normal;
 }
 div.sidebar ul.toc ul li a{
-    background-image:url("/0129_ibullet.gif");
+    background-image: url("../images/0129_ibullet.gif");
     background-position:3px 3px;
     background-repeat:no-repeat;
 }
@@ -684,7 +684,7 @@ div.sidebar ul.contributor_link li a{
     margin:4px 0 0 0;
     padding:0 0 0 20px;
     font-size:13px;
-    background-image:url("/0181_1.gif");
+    background-image: url("../images/0181_1.gif");
     background-position:2px 2px;
     background-repeat:no-repeat;
 }
@@ -693,7 +693,7 @@ div.sidebar ul.contributor_link li a{
 div.sidebar div.adcell{
     margin:0 1px 0 0;
     padding:0 15px 15px 15px;
-    background-image:url("/horizontal_green_dot.gif");
+    background-image: url("../images/horizontal_green_dot.gif");
     background-position:bottom left;
     background-repeat:repeat-x;
 }
@@ -756,4 +756,3 @@ html>body #footer{
     padding:0;
     text-align:right;
 }
-
