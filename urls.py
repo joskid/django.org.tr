@@ -1,23 +1,20 @@
-from django.conf.urls.defaults import *
+from django.conf.urls.defaults import include
+from django.conf.urls.defaults import patterns
+from django.conf.urls.defaults import url
 from django.conf import settings
 from django.contrib import admin
-from django.views.generic.simple import direct_to_template
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 admin.autodiscover()
+urlpatterns = patterns(
+    '',
 
-urlpatterns = patterns('',
-    (r'^admin/', include(admin.site.urls)),
-    (r'^$', 'index.views.index'),
-    (r'^blog/', include('blog.urls')),
-    (r'^websites/', include('websites.urls')),
-    (r'^events/', include('events.urls')),
-    (r'^profile/', include('profiles.urls')),
-    
-    url(r'^', include('social_auth.urls')),
+    url(r'^', include('apps.core.urls')),
+    url(r'^blog/', include('apps.blog.urls')),
+    url(r'^websites/', include('apps.websites.urls')),
+    url(r'^events/', include('apps.events.urls')),
+    url(r'^profile/', include('apps.profiles.urls')),
+    url(r'^social/', include('social_auth.urls')),
+    url(r'^admin/', include(admin.site.urls)),
 )
-
-if settings.DEBUG:
-    urlpatterns += patterns('',
-        (r'^(?P<path>.*\.(?i)(css|js|jpg|jpeg|png|gif|ico|swf|html|htm))$', 
-         'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
-    )
+urlpatterns += staticfiles_urlpatterns()

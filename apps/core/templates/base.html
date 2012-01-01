@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="tr" lang="tr">
+
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="tr" />
+	<title>Django Türkiye | {% block title %}{{ page.title }}{% endblock %}</title>
+	<meta name="ROBOTS" content="ALL" />
+	<meta name="keywords" content="Django, Python, Turkce, Turkiye, framework, open-source, web, programlama, uygulama" />
+	<meta name="description" content="{% block description %}{% endblock %}" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/libs/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/libs/print.css" type="text/css" media="print" />
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/libs/ie.css" type="text/css" media="screen, projection" />
+    <![endif]-->
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css" type="text/css" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+</head>
+
+<body class="default">
+	<div id="body_head">
+        <div class="container">
+            <div class="span-4">
+		        <h1 id="logo">
+                    <a href="{% url core-index %}" title="Django Türkiye">
+                        <span>Django Türkiye</span>
+                    </a>
+                </h1>
+            </div>
+
+            <div class="span-20 last">
+		        <ul>
+                    <li><a {% if is_home %} class="active" {% endif %} href="/">Ana Sayfa</a></li>
+                    <li><a {% if is_events %} class="active" {% endif %} href="{% url event_list %}">Etkinlikler</a></li>
+                    <li><a {% if is_blog %} class="active" {% endif %} href="{% url entry_list %}">Blog</a></li>
+                    <li><a {% if is_profile %} class="active" {% endif %} href="{% url profile_list %}">Djangocular</a></li>
+		        </ul>
+            </div>
+        </div>
+	</div>
+
+	<div id="billboard">
+        <div class="container">
+		    <h2>{% block billboard %}{% endblock %}</h2>
+        </div>
+        <div class="bottom-shadow"></div>
+	</div>
+
+    <div class="container">
+        <div class="span-24 last" id="page">
+	        <div class="span-16" id="content">
+		        {% block content %}{% endblock %}
+            </div>
+
+            <div class="span-8 last">
+                <div id="sidebar">
+                    {% block sidebar %}
+                        {% if user.is_authenticated %}
+                            {% with user.get_profile as item %}
+                                {% include "profiles/profile_item.html" %}
+                            {% endwith %}
+
+                            <div style="clear:both"></div>
+                        {% else %}
+                            <h2>Siz de katılın</h2>
+                            <p>
+                                Kendinizi Django dünyasında görüyorsanız siz de <a href="#" onclick="$('#login-div').show('slow');">katılın</a>.
+                            </p>
+                            <div id="login-div" style="display:none; text-align:center;">
+                                <div style="font-size:8pt;">
+                                    Google veya Facebook kullanıcınızla giriş yapabilirsiniz
+                                </div>
+                                <div style="padding-top:6px;">
+                                    <a href="{% url socialauth_begin backend="google" %}">
+                                        <img src="{{ STATIC_URL }}/images/google.gif" />
+                                    </a>
+                                    &nbsp;
+                                    <a href="{% url socialauth_begin backend="facebook" %}">
+                                        <img src="{{ STATIC_URL }}/images/facebook.gif" />
+                                    </a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+                </div>
+	        </div>
+        </div>
+
+        <div class="span-24 last">
+	        <div id="footer">
+		        <p>
+			        Django, Django Software Foundation'ın tescilli markasıdır.
+                    Django resmi sitesine <a href="http://www.djangoproject.com" title="Django resmi web sitesi">buradan</a> ulaşabilirsiniz.
+                </p>
+                <p>
+    	            <a href="http://www.teknolab.org/#about">İletişim</a>
+   	            </p>
+	        </div>
+        </div>
+
+        <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+
+        <script type="text/javascript">
+            var pageTracker = _gat._getTracker("UA-1026111-6");
+            pageTracker._initData();
+            pageTracker._trackPageview();
+        </script>
+
+    </div>
+</body>
+
+</html>
