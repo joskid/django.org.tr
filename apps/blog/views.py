@@ -2,11 +2,11 @@
 
 import datetime
 from django.shortcuts import get_list_or_404, render_to_response, get_object_or_404
-from blog.models import Entry
 from django.views.generic import list_detail
 from django.template import RequestContext
 from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.contrib.sitemaps import Sitemap
+from apps.blog.models import Entry
 
 '''#
 def blog_list(request):
@@ -27,9 +27,9 @@ def entry_list(request):
     return render_to_response('blog/entry_list.html',
                               {'entries': entries},
                               context_instance=RequestContext(request))
-    
+
 def entry_detail(request, entry_slug):
-    entries = Entry.objects.all()    
+    entries = Entry.objects.all()
     entry = Entry.objects.get(slug=entry_slug)
 
     return render_to_response('blog/entry_detail.html',

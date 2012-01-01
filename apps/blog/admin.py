@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blog.models import *
+from apps.blog.models import *
 
 '''#
 class BlogAdmin(admin.ModelAdmin):
@@ -12,4 +12,3 @@ class EntryAdmin(admin.ModelAdmin):
     list_display = ('title', 'user', 'added')
 
 admin.site.register(Entry, EntryAdmin)
-

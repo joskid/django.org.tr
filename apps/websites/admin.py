@@ -1,5 +1,5 @@
 from django.contrib import admin
-from websites.models import WebSite
+from apps.websites.models import WebSite
 
 
 class WebSiteAdmin(admin.ModelAdmin):

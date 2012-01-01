@@ -1,5 +1,5 @@
 from django.contrib import admin
-from profiles.models import Profile, City
+from apps.profiles.models import Profile, City
 
 
 class CityAdmin(admin.ModelAdmin):

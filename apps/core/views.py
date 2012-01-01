@@ -3,9 +3,9 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponseRedirect, Http404
-from events.models import Event
-from blog.models import Entry
-from websites.models import WebSite
+from apps.events.models import Event
+from apps.blog.models import Entry
+from apps.websites.models import WebSite
 
 
 def index(request):

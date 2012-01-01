@@ -49,11 +49,11 @@ INSTALLED_APPS = (
     'south',
 
     # Internal applications
-    'core',
-    'blog',
-    'events',
-    'profiles',
-    'websites',
+    'apps.core',
+    'apps.blog',
+    'apps.events',
+    'apps.profiles',
+    'apps.websites',
 )
 AUTHENTICATION_BACKENDS = (
     'social_auth.backends.facebook.FacebookBackend',

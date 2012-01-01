@@ -6,16 +6,15 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django import forms
-from profiles.models import *
 from django.views.generic.list_detail import object_list
-from django import forms
-from blog.models import Entry
+from apps.profiles.models import *
+from apps.blog.models import Entry
 
 def profile_list(request):
     queryset = Profile.objects.all()
     city_id = request.GET.get('city')
-    
-    if city_id:    
+
+    if city_id:
         queryset = queryset.filter(city__id=city_id)
     if city_id=='0':
         queryset = Profile.objects.all()
@@ -47,4 +46,3 @@ def profile_form(request):
     return render_to_response('profiles/profile_form.html',
                               {'form': form},
                               context_instance=RequestContext(request))
-    

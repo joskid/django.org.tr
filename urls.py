@@ -1,19 +1,20 @@
-from django.conf.urls.defaults import *
+from django.conf.urls.defaults import include
+from django.conf.urls.defaults import patterns
+from django.conf.urls.defaults import url
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 admin.autodiscover()
-
 urlpatterns = patterns(
     '',
 
-    url(r'^$', 'index.views.index'),
-    url(r'^blog/', include('blog.urls')),
-    url(r'^websites/', include('websites.urls')),
-    url(r'^events/', include('events.urls')),
-    url(r'^profile/', include('profiles.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include('apps.core.urls')),
+    url(r'^blog/', include('apps.blog.urls')),
+    url(r'^websites/', include('apps.websites.urls')),
+    url(r'^events/', include('apps.events.urls')),
+    url(r'^profile/', include('apps.profiles.urls')),
     url(r'^social/', include('social_auth.urls')),
+    url(r'^admin/', include(admin.site.urls)),
 )
 urlpatterns += staticfiles_urlpatterns()

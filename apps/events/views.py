@@ -4,8 +4,8 @@ from django.conf import settings
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
-from events.models import Event
 from django.views.generic.list_detail import object_list
+from apps.events.models import Event
 
 def event_list(request):
     queryset = Event.objects.all().order_by('-start')
