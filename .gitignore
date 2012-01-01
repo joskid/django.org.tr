@@ -1,4 +1,4 @@
 *.py[o,c]
 *~
 sqlite.db
-local_settings.py
+settings/local.py
