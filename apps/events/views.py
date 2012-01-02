@@ -1,22 +1,21 @@
-# -*- coding: utf-8 -*-
-from datetime import datetime, date, timedelta
-from django.conf import settings
-from django.shortcuts import render_to_response, get_object_or_404
-from django.template import RequestContext
-from django.http import HttpResponseRedirect
-from django.views.generic.list_detail import object_list
+from django.views.generic import DetailView
+from django.views.generic import ListView
 from apps.events.models import Event
 
-def event_list(request):
-    queryset = Event.objects.all().order_by('-start')
-    return object_list(request, queryset=queryset,
-                       template_name = 'events/event_list.html')
 
-def event_detail(request, year, month, day, slug):
-    event = get_object_or_404(Event, start__year=year, start__month=month,
-                              start__day=day, slug=slug)
-    events = Event.objects.all().order_by('-start')
-    return render_to_response('events/event_detail.html',
-                              {'event': event,
-                               'events': events},
-                               context_instance=RequestContext(request))
+class EventList(ListView):
+    template_name = 'events/event_list.html'
+    model = Event
+
+
+class EventDetail(DetailView):
+    template_name = 'events/event_detail.html'
+    model = Event
+
+    def get_context_data(self, **kwargs):
+        context = super(EventDetail, self).get_context_data(**kwargs)
+        context.update({
+            'events': self.model.objects.all()
+        })
+
+        return context

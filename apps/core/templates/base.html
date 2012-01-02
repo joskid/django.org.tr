@@ -8,6 +8,7 @@
 	<meta name="ROBOTS" content="ALL" />
 	<meta name="keywords" content="Django, Python, Turkce, Turkiye, framework, open-source, web, programlama, uygulama" />
 	<meta name="description" content="{% block description %}{% endblock %}" />
+    <link href="{{ STATIC_URL }}images/favicon.ico" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="{{ STATIC_URL }}css/libs/screen.css" type="text/css" media="screen, projection" />
     <link rel="stylesheet" href="{{ STATIC_URL }}css/libs/print.css" type="text/css" media="print" />
     <!--[if lt IE 8]>
@@ -49,19 +50,17 @@
 
     <div class="container">
         <div class="span-24 last" id="page">
-	        <div class="span-16" id="content">
+	        <div class="span-18" id="content">
 		        {% block content %}{% endblock %}
             </div>
 
-            <div class="span-8 last">
-                <div id="sidebar">
+            <div class="span-6 last">
+                <div class="prepend-top append-bottom padding-sidebar" id="sidebar">
                     {% block sidebar %}
                         {% if user.is_authenticated %}
                             {% with user.get_profile as item %}
                                 {% include "profiles/profile_item.html" %}
                             {% endwith %}
-
-                            <div style="clear:both"></div>
                         {% else %}
                             <h2>Siz de katılın</h2>
                             <p>
@@ -90,12 +89,9 @@
         <div class="span-24 last">
 	        <div id="footer">
 		        <p>
-			        Django, Django Software Foundation'ın tescilli markasıdır.
+			        © 2005-{% now "Y" %} Django, <a href="https://www.djangoproject.com/foundation/">Django Software Foundation</a>'ın tescilli markasıdır.
                     Django resmi sitesine <a href="http://www.djangoproject.com" title="Django resmi web sitesi">buradan</a> ulaşabilirsiniz.
                 </p>
-                <p>
-    	            <a href="http://www.teknolab.org/#about">İletişim</a>
-   	            </p>
 	        </div>
         </div>
 

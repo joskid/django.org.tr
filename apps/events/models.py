@@ -18,19 +18,21 @@ class Event(models.Model):
 
     def __unicode__(self):
         return self.title
-    
+
     def save(self, **kwargs):
         self.slug = slugify(self.title)
         super(Event, self).save(**kwargs)
 
     @models.permalink
     def get_absolute_url(self):
-        return ('event_detail', (),
-                {'year':self.start.year,
-                 'month':self.start.month,
-                 'day':self.start.day,
-                 'slug':self.slug})
-    
+        url_dict = {
+            'year': self.start.year,
+            'month': self.start.month,
+            'day': self.start.day,
+            'slug': self.slug
+        }
+
+        return ('event_detail', (), url_dict)
+
     class Meta:
         ordering = ('-start',)
-

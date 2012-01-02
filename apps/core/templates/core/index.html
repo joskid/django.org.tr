@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block billboard %}
+	Zamanı sınırlı mükemmelliyetçiler için web uygulamaları geliştirme platformu
+	<span>Django daha iyi web uygulamalarını daha kısa zamanda ve daha az kodla geliştirmenize yardımcı olur</span>
+{% endblock %}
+
+{% block title %}Ana Sayfa{% endblock %}
+
+{% block content %}
+    <div class="span-18 last" id="core-content">
+        <div class="span-12" id="core-index">
+            <div class="prepend-top append-bottom padding-horizontal">
+                <h1>Django'yu Keşfedin</h1>
+                <h2>Django, hızlı geliştirmeye ve temiz, faydacı tasarıma olanak sağlayan bir <a href="http://python.org/">Python</a> web çatısıdır.</h2>
+
+                <p>İnternet üzerinden binlerce geliştiricinin desteğiyle gelişen Django, iki temel zorlukla baş edebilecek biçimde tasarlanmıştır: Kısa zamanda bitirilmesi gereken projeler ve o projeleri yazan deneyimli web geliştiricilerinin sıkı gereksinimleri. Bu nedenle, Django'yla yüksek performanslı, şık web uygulamalarını hızlıca yazmak mümkündür.</p>
+
+                <p>Web geliştirme sürecindeki tekrarları ortadan kaldırarak, <a href="http://c2.com/cgi/wiki?DontRepeatYourself">kendini tekrar etmeme</a> presibine uygun olarak geliştirme yapmanızı sağlar.</p>
+            </div>
+
+            <div class="span-12 last" id="core-content-secondary">
+                <div class="prepend-top append-bottom padding-horizontal">
+                    <h2>
+                        <a href="{% url event_list %}">Django Türkiye etkinlikleri</a>
+                    </h2>
+                    <ul class="linklist sitelist">
+                        {% for event in events %}
+                            <li><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></li>
+                        {% empty %}
+                            <li>Henüz bir etkinlik eklenmedi.</li>
+                        {% endfor %}
+                    </ul>
+
+                    <h2>
+                        <a href="{% url entry_list %}">Django Türkiye'de yayınlanan son yazılar</a>
+                    </h2>
+                    <ul class="linklist sitelist">
+                        {% for entry in entries %}
+                            <li><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></li>
+                        {% empty %}
+                            <li>Henüz bir yazı yayınlanmadı.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="span-6 last prepend-top append-bottom" id="core-sidebar">
+            <div class="padding-sidebar">
+                <h2>Django ile Geliştirilmiş Siteler</h2>
+
+                <ul>
+                    {% for site in sites %}
+                        <li>
+                            <a href="{{ site.url }}">{{ site.name }}</a>
+                            <p>{{ site.about }}.</p>
+                        </li>
+                    {% empty %}
+                        <li>Henüz Django ile geliştirilmiş bir site eklenmedi.</li>
+                    {% endfor %}
+                </ul>
+
+                <p>
+                    Ayrıca <a href="http://django.org.tr/">Django.org.tr</a> web sitesinin kodlarına
+                    <a href="https://github.com/teknolab/django.org.tr">GitHub</a>'dan ulaşabilir,
+                    dilerseniz katkıda bulunabilirsiniz.
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block sidebar%}
+    {{ block.super }}
+
+    <h2>Kısa yollar</h2>
+
+    <ul class="linklist">
+        <li class="button-download">
+            <a href="http://www.djangoproject.com/download/"><strong>İndirin</strong></a>
+        </li>
+    </ul>
+
+    <p>
+        Django resmi sitesine <a href="http://www.djangoproject.com/">buradan</a> ulaşabilirsiniz.
+    </p>
+
+    <p>
+        Açık kaynak kodlu, <a href="http://code.djangoproject.com/browser/django/trunk/LICENSE">BSD lisanslı</a>
+    </p>
+{% endblock %}
