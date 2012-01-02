@@ -1,7 +1,9 @@
-from django.conf.urls.defaults import *
+from django.conf.urls.defaults import patterns
+from django.conf.urls.defaults import url
+from apps.core.views import CoreIndex
 
 urlpatterns = patterns(
-    'apps.core.views',
+    '',
 
-    url(r'^$', view='index', name='core-index'),
+    url(r'^$', view=CoreIndex.as_view(), name='core-index'),
 )

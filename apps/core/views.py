@@ -1,17 +1,21 @@
-# -*- coding: utf-8 -*-
-
-from django.shortcuts import render_to_response, get_object_or_404
-from django.template import RequestContext
-from django.http import HttpResponseRedirect, Http404
-from apps.events.models import Event
+from django.views.generic import TemplateView
 from apps.blog.models import Entry
+from apps.core.settings import ENTRY_COUNT
+from apps.core.settings import EVENT_COUNT
+from apps.core.settings import WEBSITE_COUNT
+from apps.events.models import Event
 from apps.websites.models import WebSite
 
 
-def index(request):
-    events = Event.objects.filter(active=True).order_by('-start')[:5]
-    return render_to_response('index.html',
-                              {'events': events,
-                               'entries': Entry.objects.all()[:5],
-                               'sites': WebSite.objects.all()[:10]},
-                               context_instance=RequestContext(request))
+class CoreIndex(TemplateView):
+    template_name = 'core/index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CoreIndex, self).get_context_data(**kwargs)
+        context.update({
+            'entries': Entry.objects.all()[:ENTRY_COUNT],
+            'events': Event.objects.filter(active=True)[:EVENT_COUNT],
+            'sites': WebSite.objects.all()[:WEBSITE_COUNT]
+        })
+
+        return context
