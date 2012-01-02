@@ -1,25 +1,11 @@
-/*
-* Feuilles de styles globale du thme pour le projet Django-Fr
-* CrŽŽ par David THENON en Janvier 2007
-* Licence GPL pour le CSS, logo et images de fonds du thme.
-* L'iconographie est composŽ d'ŽlŽments (sous leur propre licence) venant de :
-* - Style Gala 'BulletMadness' http://www.stylegala.com/features/bulletmadness/
-* - Set d'icones pour KDE 'Crystal Clear' par Everaldo
-*
-____________________
-    RedŽfinitions de balises et style pour tous
-*/
 html, body{
     background-color: #092E20;
 }
 
-body{
-    margin:0;
-    padding:0;
-    height:100%;
-    width:100%;
-    font-family:sans-serif;
+body {
+    font-family: "Trebuchet MS",sans-serif;
 }
+
 hr,
 .cale{
     visibility:hidden;
@@ -35,17 +21,22 @@ form{
 img{
     border:0;
 }
-a,
-a:link{
-    color:#b46702;
-    text-decoration:none;
+
+h2 {
+    line-height: 1.2em;
 }
-a:hover{
-    color:#d48722;
-    text-decoration:underline;
+
+a, a:link{
+    color: #AB5603;
 }
+
+a:hover {
+    background-color: #E0FFB8;
+    color: #234F32;
+}
+
 a:visited{
-    color:#944702;
+    color: #AB5603;
 }
 
 #body_head {
@@ -528,32 +519,25 @@ div.vote{
     padding-left:0.5em;
 }
 
-/* ________________________________________
-    ƒlŽments du pied de page
-*/
 #footer{
     margin: 0;
-    padding: 10px 8px 10px 8px;
+    padding: 10px 0;
     font-size: 11px;
     color: #487858;
 }
-html>body #footer{
-    margin:0;
+
+#footer a {
+    color: #FFC757;
+    text-decoration: none;
 }
-#footer a{
-    color:#d48722;
-    text-decoration:none;
+
+#footer a:hover {
+    color: #FFE761;
+    background-color: transparent;
 }
-#footer p{
-    margin:2px 0 2px 0;
+
+#footer p {
     padding:0;
-    text-align:center;
-    font-weight:bold;
-}
-#footer p.topanchor{
-    margin:0 6px 2px 6px;
-    padding:0;
-    text-align:right;
 }
 
 #page {
@@ -583,19 +567,54 @@ html>body #footer{
     background-color: #326342;
 }
 
+#core-content h2 {
+    margin-top: 1.2em;
+    margin-bottom: .6em;
+    font-size: 140%;
+    color: #487858;
+}
+
 #core-content-secondary {
     background-color: #487858;
+    color: #fff;
+}
+
+#core-content-secondary h2 a {
+    color: #9AEF3F;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#core-content-secondary h2 a:hover {
+    background-color: transparent;
 }
 
 #core-index {
     background-color: #fff;
 }
 
-#core-sidebar {
+#core-sidebar, #sidebar {
+    color: #fff;
+    font-size: 92%;
+}
+
+#core-sidebar h2, #sidebar h2 {
+    margin-top: 0;
+    font-size: 16px;
     color: #fff;
 }
 
-#core-sidebar h2 {
-    font-size: 16px;
-    color: #fff;
+#core-sidebar a {
+    text-decoration: none;
+    color: #FFC757;
+}
+
+#core-sidebar a:hover {
+    color: #FFE761;
+    background-color: transparent;
+}
+
+.padding-horizontal {
+    padding: 0 20px;
 }
