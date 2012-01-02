@@ -47,26 +47,26 @@
         </div>
 
         <div class="span-6 last prepend-top append-bottom" id="core-sidebar">
-            <h2>Django ile Geliştirilmiş Siteler</h2>
+            <div class="padding-sidebar">
+                <h2>Django ile Geliştirilmiş Siteler</h2>
 
-            <ul>
-                {% for site in sites %}
-                    <li>
-                        <a href="{{ site.url }}">{{ site.name }}</a>
-                        <p>{{ site.about }}.</p>
-                    </li>
-                {% empty %}
-                    <li>
-                        Henüz Django ile geliştirilmiş bir site eklenmedi.
-                    </li>
-                {% endfor %}
-            </ul>
+                <ul>
+                    {% for site in sites %}
+                        <li>
+                            <a href="{{ site.url }}">{{ site.name }}</a>
+                            <p>{{ site.about }}.</p>
+                        </li>
+                    {% empty %}
+                        <li>Henüz Django ile geliştirilmiş bir site eklenmedi.</li>
+                    {% endfor %}
+                </ul>
 
-            <p>
-                Ayrıca <a href="http://django.org.tr/">Django.org.tr</a> web sitesinin kodlarına
-                <a href="https://github.com/teknolab/django.org.tr">GitHub</a>'dan ulaşabilir,
-                dilerseniz katkıda bulunabilirsiniz.
-            </p>
+                <p>
+                    Ayrıca <a href="http://django.org.tr/">Django.org.tr</a> web sitesinin kodlarına
+                    <a href="https://github.com/teknolab/django.org.tr">GitHub</a>'dan ulaşabilir,
+                    dilerseniz katkıda bulunabilirsiniz.
+                </p>
+            </div>
         </div>
     </div>
 {% endblock %}

@@ -554,14 +554,6 @@ div.vote{
     font-size: 26px;
 }
 
-#sidebar {
-    color: #fff;
-}
-
-#sidebar h2 {
-    color: #fff;
-}
-
 #core-content {
     padding-bottom: 10px;
     background-color: #326342;
@@ -605,16 +597,20 @@ div.vote{
     color: #fff;
 }
 
-#core-sidebar a {
+#core-sidebar a, #sidebar a {
     text-decoration: none;
     color: #FFC757;
 }
 
-#core-sidebar a:hover {
+#core-sidebar a:hover, #sidebar a:hover {
     color: #FFE761;
     background-color: transparent;
 }
 
 .padding-horizontal {
     padding: 0 20px;
+}
+
+.padding-sidebar {
+    padding: 0 15px 0 5px;
 }

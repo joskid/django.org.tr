@@ -54,15 +54,13 @@
 		        {% block content %}{% endblock %}
             </div>
 
-            <div class="span-6 last prepend-top append-bottom">
-                <div id="sidebar">
+            <div class="span-6 last">
+                <div class="prepend-top append-bottom padding-sidebar" id="sidebar">
                     {% block sidebar %}
                         {% if user.is_authenticated %}
                             {% with user.get_profile as item %}
                                 {% include "profiles/profile_item.html" %}
                             {% endwith %}
-
-                            <div style="clear:both"></div>
                         {% else %}
                             <h2>Siz de katılın</h2>
                             <p>
