@@ -566,10 +566,36 @@ html>body #footer{
     background-color: #fff;
 }
 
+#content h1 {
+    font-size: 26px;
+}
+
 #sidebar {
     color: #fff;
 }
 
 #sidebar h2 {
+    color: #fff;
+}
+
+#core-content {
+    padding-bottom: 10px;
+    background-color: #326342;
+}
+
+#core-content-secondary {
+    background-color: #487858;
+}
+
+#core-index {
+    background-color: #fff;
+}
+
+#core-sidebar {
+    color: #fff;
+}
+
+#core-sidebar h2 {
+    font-size: 16px;
     color: #fff;
 }
