@@ -21,8 +21,7 @@ SECRET_KEY = 'please-generate-your-secret-key'
 ROOT = path.split(path.realpath(path.dirname(__file__)))[0]
 
 MEDIA_ROOT = ''
-STATIC_ROOT = ''
-
+STATIC_ROOT = path.join(ROOT, '.epio_static')
 STATICFILES_DIRS = (path.join(ROOT, 'static'),)
 
 # TWITTER_CONSUMER_KEY = ''
