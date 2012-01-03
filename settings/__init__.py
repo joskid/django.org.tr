@@ -72,10 +72,22 @@ SOCIAL_AUTH_DEFAULT_USERNAME = 'djangocu'
 SOCIAL_AUTH_ENABLED_BACKEND = ('google', 'facebook')
 AUTH_PROFILE_MODULE = 'profiles.Profile'
 
-
 ## Local Settings
 from settings.default import *
 try:
-    from settings.local import *
+    from bundle_config import config
+
+    DEBUG = False
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': config['postgres']['database'],
+            'USER': config['postgres']['username'],
+            'PORT': int(config['postgres']['port']),
+            'HOST': config['postgres']['host'],
+            'PASSWORD': config['postgres']['password']
+        }
+    }
+
 except ImportError:
     pass
