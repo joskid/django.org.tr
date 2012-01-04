@@ -55,6 +55,7 @@ INSTALLED_APPS = (
     'apps.events',
     'apps.profiles',
     'apps.websites',
+    'apps.aggregator'
 )
 AUTHENTICATION_BACKENDS = (
     'social_auth.backends.facebook.FacebookBackend',
