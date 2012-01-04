@@ -17,6 +17,7 @@ DATABASES = {
 }
 
 SECRET_KEY = 'please-generate-your-secret-key'
+SUPERFEEDR_LOGIN = ('my_superfeedr_username', 'password')
 
 ROOT = path.split(path.realpath(path.dirname(__file__)))[0]
 

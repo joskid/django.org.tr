@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 from django import forms
 from django.forms import widgets
-from .models import Feed, FeedType
+from .models import Feed
 
 class FeedModelForm(forms.ModelForm):
     title = forms.CharField(max_length=250,
@@ -14,4 +14,4 @@ class FeedModelForm(forms.ModelForm):
 
     class Meta:
         model = Feed
-        exclude = ('is_defunct', 'feed_type', 'owner')
+        exclude = ('is_defunct', 'owner')

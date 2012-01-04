@@ -614,3 +614,7 @@ div.vote{
 .padding-sidebar {
     padding: 0 15px 0 5px;
 }
+
+.padding-content {
+    padding: 0 15px;
+}
