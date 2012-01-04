@@ -10,6 +10,7 @@ urlpatterns = patterns(
     '',
 
     url(r'^', include('apps.core.urls')),
+    url(r'^planet/', include('apps.aggregator.urls')),
     url(r'^blog/', include('apps.blog.urls')),
     url(r'^websites/', include('apps.websites.urls')),
     url(r'^events/', include('apps.events.urls')),
