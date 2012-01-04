@@ -3,3 +3,4 @@
 sqlite.db
 settings/local.py
 .epio_static/
+env/
