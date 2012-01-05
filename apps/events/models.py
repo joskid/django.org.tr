@@ -1,27 +1,29 @@
-# -*- coding: utf-8 -*-
+from datetime import datetime
 from django.db import models
-from django.contrib.auth.models import User
+from time import mktime
 from utils import slugify
 
 
 class Event(models.Model):
     title = models.CharField(max_length=250)
-    teaser = models.CharField(max_length=250)
-    description = models.TextField('Açıklama', blank=True, null=True)
-    start = models.DateTimeField('Başlangıç zamanı', db_index=True)
-    end = models.DateTimeField('Bitiş zamanı', db_index=True)
-    locations = models.TextField('Yer(ler)', max_length=250, blank=True)
-    active = models.BooleanField('Geçerli', default=True)
-    user = models.ForeignKey(User)
+    description = models.TextField(blank=True)
+    address = models.TextField(max_length=250, blank=True)
+    start = models.DateTimeField(db_index=True)
+    is_published = models.BooleanField(default=False)
     slug = models.SlugField(editable=False)
-    added = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
         return self.title
 
     def save(self, **kwargs):
         self.slug = slugify(self.title)
-        super(Event, self).save(**kwargs)
+
+        return super(Event, self).save(**kwargs)
+
+    @property
+    def event_date(self):
+        return int(mktime(self.created_at.timetuple()))
 
     @models.permalink
     def get_absolute_url(self):

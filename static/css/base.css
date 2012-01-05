@@ -618,3 +618,15 @@ div.vote{
 .padding-content {
     padding: 0 15px;
 }
+
+#events h3 {
+    margin: 0 0 10px 0;
+}
+
+#events .meta span.title {
+    font-weight: bold;
+}
+
+#events .meta div.address {
+    margin-bottom: 5px;
+}

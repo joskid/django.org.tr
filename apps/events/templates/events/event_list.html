@@ -1,30 +1,56 @@
-{% extends "base.html" %}
-{%block billboard%}Etkinlikler{%endblock%}
+{% extends "base_content.html" %}
+
+{% block billboard %}
+    <h2>Etkinlikler</h2>
+{% endblock %}
 
 {% block title %}Etkinlikler{% endblock %}
 
-{% block content %}
-	<div id="content-main">
-			
-			{% for item in object_list %}
-				{% include 'events/event_item.html' %}
-			{% endfor %}
-	</div>
-    
-{% endblock %}
+{% block single_content %}
+    <div id="events">
+		{% for item in object_list %}
+            <div class="event append-bottom">
+                <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
+                <div class="meta">
+                    <div class="date">
+                        <span class="title">Tarih:</span>
+                        <span class="value">{{ item.start|date:"j F Y" }}</span>
+                    </div>
+                    <div class="time">
+                        <span class="title">Saat:</span>
+                        <span class="value">{{ item.start|date:"H:m" }}</span>
+                    </div>
+                    <div class="address">
+                        <span class="title">Adres:</span>
+                        <span class="value">{{ item.address }}</span>
+                    </div>
+                </div>
 
+                {% if item.description %}
+                    <div class="description">
+                        <p>{{ item.description }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>Henüz bir etkinlik girilmedi.</p>
+		{% endfor %}
+	</div>
+{% endblock %}
 
 {% block sidebar %}
     {{ block.super }}
-    <h2>Etkinliklerimize katılmak için</h2>
-    <p>
-        Bizimle <a href="http://teknolab.org/#about">iletişime</a> gecin.
-    </p>
-    
 
-      {% for item in object_list %}
-          <li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></li>
-        <p>{{item.start}}</p>
-          </li>
-    {% endfor %}
+    <h2>Etkinliklerimize katılmak için</h2>
+
+    <p>Bizimle <a href="http://teknolab.org/#about">iletişime</a> gecin.</p>
+
+    <ul>
+        {% for item in object_list %}
+            <li>
+                <a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
+                <p>{{ item.start }}</p>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}
