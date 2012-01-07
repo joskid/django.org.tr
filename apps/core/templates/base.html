@@ -33,8 +33,8 @@
             <div class="span-20 last">
 		        <ul>
                     <li><a {% if is_home %} class="active" {% endif %} href="/">Ana Sayfa</a></li>
-                    <li><a {% if is_events %} class="active" {% endif %} href="{% url event_list %}">Etkinlikler</a></li>
-                    <li><a {% if is_blog %} class="active" {% endif %} href="{% url entry_list %}">Blog</a></li>
+                    <li><a {% if is_events %} class="active" {% endif %} href="{% url event-index %}">Etkinlikler</a></li>
+                    <li><a {% if is_blog %} class="active" {% endif %} href="{% url planet-index %}">Gezegen</a></li>
                     <li><a {% if is_profile %} class="active" {% endif %} href="{% url profile_list %}">Djangocular</a></li>
 		        </ul>
             </div>

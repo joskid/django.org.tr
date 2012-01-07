@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block billboard %}
+    <h2>Etkinlik Detayı</h2>
+{% endblock %}
+
+{% block content %}
+    <div id="events" class="prepend-top append-bottom padding-content">
+    <h1>{{ event.title }}</h3>
+    <div class="meta">
+        <div class="date">
+            <span class="title">Tarih:</span>
+            <span class="value">{{ event.start|date:"j F Y" }}</span>
+        </div>
+        <div class="time">
+            <span class="title">Saat:</span>
+            <span class="value">{{ event.start|date:"H:m" }}</span>
+        </div>
+        <div class="address">
+            <span class="title">Adres:</span>
+            <span class="value">{{ event.address }}</span>
+        </div>
+    </div>
+
+    {% if event.description %}
+        <div class="description">
+            <p>{{ event.description }}</p>
+        </div>
+    {% endif %}
+    </div>
+{% endblock %}

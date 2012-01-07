@@ -48,10 +48,10 @@ INSTALLED_APPS = (
     'social_auth',
     'easy_thumbnails',
     'south',
+    'django_push.subscriber',
 
     # Internal applications
     'apps.core',
-    'apps.blog',
     'apps.events',
     'apps.profiles',
     'apps.websites',
@@ -73,6 +73,11 @@ SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
 SOCIAL_AUTH_DEFAULT_USERNAME = 'djangocu'
 SOCIAL_AUTH_ENABLED_BACKEND = ('google', 'facebook')
 AUTH_PROFILE_MODULE = 'profiles.Profile'
+
+# Pubsubhubbub settings
+PUSH_HUB = 'https://superfeedr.com/hubbub'
+PUSH_CREDENTIALS = 'apps.aggregator.utils.push_credentials'
+PUSH_SSL_CALLBACK = True
 
 ## Local Settings
 from settings.default import *

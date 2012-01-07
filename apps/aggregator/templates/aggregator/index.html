@@ -1,29 +1,18 @@
-{% extends "base_community.html" %}
+{% extends "base_content.html" %}
 
-{% block content %}
-<h1>Community</h1>
-<h2 class="deck">This page, updated regularly, aggregates what's going on in the community.</h2>
+{% block title %}Gezegen{% endblock %}
 
-{% for feedtype in feedtype_list %}
-<div id="{{ feedtype.slug }}" class="module {% cycle "first" "last" %}">
-  <h3 class="header">
-    {{ feedtype.name }}
-    <a class="rss" href="{% url aggregator-feed slug=feedtype.slug %}">RSS</a>
-  </h3>
-  {% for item in feedtype.items|slice:":5" %}
-    <h5><a href="{{ item.link }}">{{ item.title }}</a></h5>
-    <p class="date">{{ item.date_modified|date:"N jS, Y \a\t P" }} by <a href="{{ item.feed.public_url }}">{{ item.feed.title }}</a></p>
-  {% endfor %}
-  <p>
-    {% if feedtype.items|length %}
-      <a href="{% url community-feed-list feedtype.slug %}">View more</a>
-    {% endif %}
-    {% if feedtype.items and feedtype.can_self_add %}
-      or 
-    {% endif %}
-    {% if feedtype.can_self_add %}
-      <a href="{% url community-add-feed feedtype.slug %}">Add your feed</a>
-    {% endif %}</p>
-</div>
-{% endfor %}
+{% block billboard %}
+    <h2>Gezegen<h2>
+{% endblock %}
+
+{% block single_content %}
+    {% for item in item_list %}
+        <h5><a href="{{ item.link }}">{{ item.title }}</a></h5>
+        <p class="date">
+            {{ item.date_modified|date:"N jS, Y \a\t P" }} by <a href="{{ item.feed.public_url }}">{{ item.feed.title }}</a>
+        </p>
+    {% empty %}
+        <p>Şimdilik bir girdi bulunmamaktadır. Daha sonra tekrar bekleriz.</p>
+    {% endfor %}
 {% endblock %}
