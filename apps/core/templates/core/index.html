@@ -24,9 +24,12 @@
                     <h2>Django Türkiye etkinlikleri</h2>
                     <ul class="linklist sitelist">
                         {% for event in events %}
-                            <li><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></li>
+                            <li>
+                                <a href="{{ event.get_absolute_url }}">{{ event.title }}</a>
+                                <span class="date">{{ event.start|date:"j F Y, H:m"}}
+                            </li>
                         {% empty %}
-                            <li>Güncel bir etkinlik bulunamadı, tüm etkinliklerin listesine <a href="{% url event_list %}">buradan</a> bakabilirsiniz.</li>
+                            <li>Güncel bir etkinlik bulunamadı, tüm etkinliklerin listesine <a href="{% url event-index %}">buradan</a> bakabilirsiniz.</li>
                         {% endfor %}
                     </ul>
 
