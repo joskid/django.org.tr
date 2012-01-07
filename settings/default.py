@@ -1,10 +1,12 @@
+#-*- coding: utf-8 -*-
 from os import path
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    (u'Onur Mat', 'omat@teknolab.org'),
+    (u'Gokmen Gorgen', 'gokmen@alageek.com')
 )
 
 MANAGERS = ADMINS
