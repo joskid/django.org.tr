@@ -1,33 +1,31 @@
 {% extends "base.html" %}
 
-{%block billboard%}Etkinlik Detayı{%endblock%}
+{% block billboard %}
+    <h2>Etkinlik Detayı</h2>
+{% endblock %}
 
-{%block content%}
-	<div id="content-main">
-
-		<div class="fortune" id="f106">
-		    <h3>
-		        <a href="{{ event.get_absolute_url }}">{{ event.title }}</a>
-		        {{event.start}}-{{event.end}}
-		    </h3>
-		    <dl class="irc"><dt style="color: rgb(207, 207, 207); "> Açıklama:</dt><dd> {{event.description|safe|linebreaksbr}}</dd></dl>
-		    <dl class="irc"><dt style="color: rgb(207, 207, 207); "> Adres:</dt><dd> {{event.locations|safe|linebreaksbr}}</dd></dl>
-		    <dl class="irc"><dt style="color: rgb(207, 207, 207); "> Ekleyen:</dt><dd> <a href="{{event.user.get_profile.get_absolute_url}}">{{event.user.get_profile}}</a></dd></dl>
-		    
-		</div>
-	</div>   
-	<div class="sidebar" id="content-related">
-      
-		<h2>Etkinliklerimize katılmak için</h2>
-		<p>
-		    Bizimle <a href="www.teknolab.org">iletişime</a> gecin.
-		</p>
-		
-
-    	{% for event in events %}
-	        <li><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></li>
-		    <p>{{event.start}}</p>
-	        </li>
-		{% endfor %}
+{% block content %}
+    <div id="events" class="prepend-top append-bottom padding-content">
+    <h1>{{ event.title }}</h3>
+    <div class="meta">
+        <div class="date">
+            <span class="title">Tarih:</span>
+            <span class="value">{{ event.start|date:"j F Y" }}</span>
+        </div>
+        <div class="time">
+            <span class="title">Saat:</span>
+            <span class="value">{{ event.start|date:"H:m" }}</span>
+        </div>
+        <div class="address">
+            <span class="title">Adres:</span>
+            <span class="value">{{ event.address }}</span>
+        </div>
     </div>
-{%endblock%}
+
+    {% if event.description %}
+        <div class="description">
+            <p>{{ event.description }}</p>
+        </div>
+    {% endif %}
+    </div>
+{% endblock %}
