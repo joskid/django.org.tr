@@ -597,3 +597,31 @@ div.vote{
 #profiles .profile h4 {
     margin: 0;
 }
+
+#profile {
+    min-height: 150px;
+}
+
+#profile img {
+    padding: 0 10px;
+}
+
+#profile h1 {
+    margin: 0 0 10px 0;
+    font-size: 32px;
+}
+
+#profile h2 {
+    margin: 0;
+}
+
+#profile #about {
+    font-size: 15px;
+    color: #777;
+    font-style: italic;
+    font-family: serif;
+}
+
+#profile span.title {
+    font-weight: bold;
+}

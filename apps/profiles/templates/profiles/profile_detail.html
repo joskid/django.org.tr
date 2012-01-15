@@ -1,64 +1,43 @@
 {% extends "base.html" %}
 {% load thumbnail gravatar %}
 
-{%block billboard%}Profil Detayı{%endblock%}
-{% block title %}{{ profile }}{% endblock %}
+{% block billboard %}Profil Detayı{% endblock %}
+{% block title %}{{ profile.user.get_full_name }}{% endblock %}
 
+{% block content %}
+    <div id="profile" class="prepend-top">
+        <div class="span-4">
+            {% if profile.photo %}
+                <img src="{% thumbnail profile.photo 128x128 %}" class="left" />
+            {% else %}
+                <img src="{% gravatar profile.user.email 128 "g" "mm" %}" class="left" />
+            {% endif %}
+        </div>
 
-{%block content%}
-	<div id="content-main">
-		<h1>{{ profile }}</h1>
-		<div class="content first-content">
-		    
-		    <ul class="linklist ">
-            <div style="float:left; padding:4px;">
-                {% if profile.photo %}
-                   <img src="{% thumbnail profile.photo 240x240 %}">
-                {% else %}
-                   <img src="{% gravatar profile.user.email 240 "g" "mm" %}">
+        <div class="span-14 last">
+            <h1>{{ profile.user.get_full_name }}</h1>
+            <div id="about">
+                {{ profile.about|safe|linebreaksbr }}
+            </div>
+
+            <div id="bio">
+                {% if profile.url %}
+                    <span class="title">Web Sitesi:</span>
+                    <a href="{{ profile.url }}">
+                        <span>{{ profile.url }}</span>
+                    </a>
+                {% endif %}
+
+                {% if profile.city %}
+	            	<span class="title">Şehir:</span>
+                    <span>{{profile.city.name}}</span>
                 {% endif %}
             </div>
-            <div>
-              {% if profile.about %}
-            	    <p>{{profile.about|safe|linebreaksbr}}</p>
-            	{% endif %}
-            </div>
-            {% if profile.user.entry_set.all.0 %}
-              <div class="bio">
-                <h2>Yazıları</h2>
-                <ul>
-                {% for entry in profile.user.entry_set.all %}
-                  <li>
-                    <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
-                        <p>{{ entry.teaser }}</p>                 
-                  </li>
-                {% endfor %}
-                </ul>
-              </div>
-            {% endif %}
-            {% if profile.user.event_set.all.0 %}
-              <div class="bio">
-                <h2>Etkinlikleri</h2>
-                <ul>
-                {% for event in profile.user.event_set.all %}
-                  <li>
-                    <a href="{{ event.get_absolute_url }}">{{ event.title }}</a>
-                        <p>{{ event.teaser }}</p>                 
-                  </li>
-                {% endfor %}
-                </ul>
-              </div>
-            {% endif %}
-            <div class="bio">
-              {% if profile.url %}
-                <p>Web Sitesi: <a href="{{profile.url}}">{{profile.url}}</a></p>   
-              {%endif%}
-              {% if profile.city %}
-	            	<p>Şehir: {{profile.city.name}}</p>
-              {%endif%}
-            </div>
-            <div style="clear:both"></div>
-		</div>
-	</div>
-    
-{%endblock%}
+        </div>
+
+        <div class="span-18 prepend-top padding-content">
+            <h2>Topluluk Çalışmaları</h2>
+            <p>Bu bolum henuz gelistirilme asamasindadir.</p>
+        </div>
+    </div>
+{% endblock %}
