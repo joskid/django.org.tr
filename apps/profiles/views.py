@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse
 from django.utils.decorators import method_decorator
 from django.views.generic import DetailView
 from django.views.generic import ListView
-from django.views.generic import FormView
+from django.views.generic import UpdateView
 from apps.profiles.forms import ProfileForm
 from apps.profiles.models import City
 from apps.profiles.models import Profile
@@ -38,9 +38,14 @@ class ProfileDetail(DetailView):
         return self.model.objects.get(user__username=username)
 
 
-class ProfileEdit(FormView):
+class ProfileEdit(UpdateView):
     template_name = 'profiles/form.html'
     form_class = ProfileForm
+    model = Profile
+
+    def get_object(self):
+        return self.model.objects.get(
+            user__username=self.request.user.username)
 
     def get_success_url(self):
         return reverse('profile_detail', args=[self.request.user.username])

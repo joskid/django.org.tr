@@ -8,7 +8,7 @@ urlpatterns = patterns(
     '',
 
     url(r'^$', view=ProfileList.as_view(), name='profile_list'),
-    url(r'^(?P<username>[- \w]+)/$', view=ProfileDetail.as_view(),
-        name='profile_detail'),
     url(r'^edit/$', view=ProfileEdit.as_view(), name='profile_form'),
+    url(r'^(?P<username>[- \w]+)/$', view=ProfileDetail.as_view(),
+        name='profile_detail')
 )

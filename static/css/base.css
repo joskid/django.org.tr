@@ -625,3 +625,22 @@ div.vote{
 #profile span.title {
     font-weight: bold;
 }
+
+#profile-edit th {
+    vertical-align: top;
+}
+
+#profile-edit textarea {
+    height: 120px;
+}
+
+#profile-edit input[type="text"], #profile-edit textarea {
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+#profile-edit tr:nth-child(even) td {
+    background-color: transparent;
+}
