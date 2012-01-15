@@ -13,7 +13,7 @@ class City(models.Model):
 
     def __unicode__(self):
         return self.name
-    
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, verbose_name='Kullanıcı adı',
@@ -25,13 +25,13 @@ class Profile(models.Model):
                               blank=True, null=True)
 
     def __unicode__(self):
-        return '%s %s' % (self.user.first_name, self.user.last_name)
-    
+        return self.user.get_full_name()
+
     @models.permalink
     def get_absolute_url(self):
         return ('profile_detail', (),
                 {'username' : self.user.username})
-        
+
 
 def create_profile(sender, instance, created, **kwargs):
     if created:

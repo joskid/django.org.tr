@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load thumbnail gravatar %}
+
+{% block billboard %}Profil Detayı{% endblock %}
+{% block title %}{{ profile.user.get_full_name }}{% endblock %}
+
+{% block content %}
+    <div id="profile" class="prepend-top">
+        <div class="span-4">
+            {% if profile.photo %}
+                <img src="{% thumbnail profile.photo 128x128 %}" class="left" />
+            {% else %}
+                <img src="{% gravatar profile.user.email 128 "g" "mm" %}" class="left" />
+            {% endif %}
+        </div>
+
+        <div class="span-14 last">
+            <h1>{{ profile.user.get_full_name }}</h1>
+            <div id="about">
+                {{ profile.about|safe|linebreaksbr }}
+            </div>
+
+            <div id="bio">
+                {% if profile.url %}
+                    <span class="title">Web Sitesi:</span>
+                    <a href="{{ profile.url }}">
+                        <span>{{ profile.url }}</span>
+                    </a>
+                {% endif %}
+
+                {% if profile.city %}
+	            	<span class="title">Şehir:</span>
+                    <span>{{profile.city.name}}</span>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="span-18 prepend-top padding-content">
+            <h2>Topluluk Çalışmaları</h2>
+            <p>Bu bolum henuz gelistirilme asamasindadir.</p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load thumbnail gravatar %}
+
+{% block billboard %}Djangocular{% endblock %}
+
+{% block title %}Djangocular{% endblock %}
+
+{% block content %}
+    <div id="profiles">
+        {% for item in object_list %}
+            <div class="span-6{% cycle "" "" " last" %}">
+                <div class="profile">
+                    {% if item.photo %}
+                        <img src="{% thumbnail item.photo 60x60 %}" class="left" />
+                    {% else %}
+                        <img src="{% gravatar item.user.email 60 "g" "mm" %}" class="left" />
+                    {% endif %}
+                    <a href="{{ item.get_absolute_url }}">
+                        <h4>{{ item.user.get_full_name }}</h4>
+                    </a>
+                    {% if item == request.user.get_profile %}
+                        <a href="{% url profile_form %}">düzenle</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
