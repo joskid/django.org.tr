@@ -1,35 +1,28 @@
 {% extends "base.html" %}
-{%block billboard%}Djangocular{%endblock%}
+{% load thumbnail gravatar %}
 
-{% block title %}Dajngocular{% endblock %}
+{% block billboard %}Djangocular{% endblock %}
+
+{% block title %}Djangocular{% endblock %}
 
 {% block content %}
-
-	<div id="content-main">
-	  {% comment %}
-		<h1>
-			<form name="city_form" id="city_form">
-				Şehirler:
-				<select name="city" onchange="this.form.submit();">
-					<option value="0">------------</option>
-					{% for city in cities %}
-						<option value="{{city.id}}" {% if city.id|stringformat:"s" == request.GET.city%}selected{% endif %}>{{city.name}}</option>
-					{% endfor %}
-				</select>
-			</form>		
-		</h1>
-		{% endcomment %}
-		<div class="content first-content">
-
-			<ul class="linklist ">
-		
-				{% for item in object_list %}
-					{% include 'profiles/profile_item.html' %}
-				{% endfor %}
-				
-			</ul>
-		</div>
-		
-	</div>
+    <div class="prepend-top" id="profiles">
+        {% for item in object_list %}
+            <div class="span-6{% cycle "" "" " last" %}">
+                <div class="profile">
+                    {% if item.photo %}
+                        <img src="{% thumbnail item.photo 60x60 %}" class="left" />
+                    {% else %}
+                        <img src="{% gravatar item.user.email 60 "g" "mm" %}" class="left" />
+                    {% endif %}
+                    <a href="{{ item.get_absolute_url }}">
+                        <h4>{{ item.user.get_full_name }}</h4>
+                    </a>
+                    {% if item == request.user.get_profile %}
+                        <a href="{% url profile_form %}">düzenle</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
-

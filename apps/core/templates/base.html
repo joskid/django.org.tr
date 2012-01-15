@@ -57,11 +57,7 @@
             <div class="span-6 last">
                 <div class="prepend-top append-bottom padding-sidebar" id="sidebar">
                     {% block sidebar %}
-                        {% if user.is_authenticated %}
-                            {% with user.get_profile as item %}
-                                {% include "profiles/profile_item.html" %}
-                            {% endwith %}
-                        {% else %}
+                        {% if not user.is_authenticated %}
                             <h2>Siz de katılın</h2>
                             <p>
                                 Kendinizi Django dünyasında görüyorsanız siz de <a href="#" onclick="$('#login-div').show('slow');">katılın</a>.

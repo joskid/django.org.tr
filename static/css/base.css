@@ -580,3 +580,20 @@ div.vote{
 #events .meta div.address {
     margin-bottom: 5px;
 }
+
+#profiles .profile {
+    padding: 10px;
+    height: 60px;
+}
+
+#profiles .profile img {
+    padding-right: 10px;
+}
+
+#profiles .profile a {
+    text-decoration: none;
+}
+
+#profiles .profile h4 {
+    margin: 0;
+}
