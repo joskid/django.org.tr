@@ -1,10 +1,14 @@
-from django.conf.urls.defaults import *
-
+from django.conf.urls.defaults import patterns
+from django.conf.urls.defaults import url
+from apps.profiles.views import ProfileDetail
+from apps.profiles.views import ProfileEdit
+from apps.profiles.views import ProfileList
 
 urlpatterns = patterns(
-    'apps.profiles.views',
+    '',
 
-    url(r'^form/$', 'profile_form', name='profile_form'),
-    url(r'^$', 'profile_list', name='profile_list'),
-    url(r'^(?P<username>[- \w]+)/$', 'profile_detail', name='profile_detail'),
+    url(r'^$', view=ProfileList.as_view(), name='profile_list'),
+    url(r'^(?P<username>[- \w]+)/$', view=ProfileDetail.as_view(),
+        name='profile_detail'),
+    url(r'^edit/$', view=ProfileEdit.as_view(), name='profile_form'),
 )

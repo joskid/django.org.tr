@@ -1,51 +1,55 @@
-# -*- coding: utf-8 -*-
-from datetime import datetime
-from datetime import date
-from datetime import timedelta
 from django.contrib.auth.decorators import login_required
-from django.conf import settings
-from django.shortcuts import render_to_response
-from django.shortcuts import get_object_or_404
-from django.template import RequestContext
-from django.http import HttpResponseRedirect
-from django import forms
-from django.views.generic.list_detail import object_list
-from apps.profiles.models import *
-from apps.blog.models import Entry
+from django.core.urlresolvers import reverse
+from django.utils.decorators import method_decorator
+from django.views.generic import DetailView
+from django.views.generic import ListView
+from django.views.generic import FormView
+from apps.profiles.forms import ProfileForm
+from apps.profiles.models import City
+from apps.profiles.models import Profile
 
-def profile_list(request):
-    queryset = Profile.objects.all()
-    city_id = request.GET.get('city')
 
-    if city_id:
-        queryset = queryset.filter(city__id=city_id)
-    if city_id=='0':
-        queryset = Profile.objects.all()
-    cities = City.objects.all()
-    return object_list(request, queryset=queryset,
-                       template_name = 'profiles/profile_list.html',
-                       extra_context={'cities':cities})
+class ProfileList(ListView):
+    template_name = 'profiles/list.html'
+    model = Profile
 
-def profile_detail(request, username):
-    profile = get_object_or_404(Profile, user__username=username)
-    return render_to_response('profiles/profile_detail.html',
-                              {'profile' : profile},
-                               context_instance=RequestContext(request))
+    def get_queryset(self):
+        city_id = self.request.GET.get('city', False)
+        if city_id:
+            return self.model.objects.filter(city__id=city_id)
+        return super(ProfileList, self).get_queryset()
 
-class ProfileForm(forms.ModelForm):
-    class Meta:
-        model = Profile
-        exclude = 'city'
+    def get_context_data(self, **kwargs):
+        context = super(ProfileList, self).get_context_data(**kwargs)
+        context.update({
+            'cities': City.objects.all()
+        })
 
-@login_required
-def profile_form(request):
-    if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES, instance=request.user.get_profile())
-        if form.is_valid():
-            profile = form.save()
-            return HttpResponseRedirect(profile.get_absolute_url())
-    else:
-        form = ProfileForm(instance=request.user.get_profile())
-    return render_to_response('profiles/profile_form.html',
-                              {'form': form},
-                              context_instance=RequestContext(request))
+        return context
+
+
+class ProfileDetail(DetailView):
+    template_name = 'profiles/detail.html'
+    model = Profile
+
+    def get_object(self, queryset=None):
+        username = self.kwargs.get('username', '')
+
+        return self.model.objects.get(user__username=username)
+
+
+class ProfileEdit(FormView):
+    template_name = 'profiles/form.html'
+    form_class = ProfileForm
+
+    def get_success_url(self):
+        return reverse('profile_detail', args=[self.request.user.username])
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(ProfileEdit, self).dispatch(*args, **kwargs)
+
+    def form_valid(self, form):
+        form.save()
+
+        return super(ProfileEdit, self).form_valid(form)
