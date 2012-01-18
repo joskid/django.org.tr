@@ -71,7 +71,7 @@ SOCIAL_AUTH_ERROR_KEY = 'social_errors'
 SOCIAL_AUTH_COMPLETE_URL_NAME = 'socialauth_complete'
 SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
 SOCIAL_AUTH_DEFAULT_USERNAME = 'djangocu'
-SOCIAL_AUTH_ENABLED_BACKEND = ('google', 'facebook')
+SOCIAL_AUTH_ENABLED_BACKENDS = ('google', 'facebook')
 AUTH_PROFILE_MODULE = 'profiles.Profile'
 
 # Pubsubhubbub settings
@@ -96,5 +96,11 @@ try:
         }
     }
 
+except ImportError:
+    pass
+
+# FIXME: use settings_local.py, it's dirty solution.
+try:
+    from settings.local import *
 except ImportError:
     pass
