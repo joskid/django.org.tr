@@ -98,3 +98,9 @@ try:
 
 except ImportError:
     pass
+
+# FIXME: use settings_local.py, it's dirty solution.
+try:
+    from settings.local import *
+except ImportError:
+    pass
