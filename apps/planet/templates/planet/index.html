@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block billboard %}
+    Gezegen
+    <span>Türkçe bilen Django kullanıcılarının paylaşımlarını buradan takip edebilirsiniz.</span>
+{% endblock %}
+{% block title %}Gezegen{% endblock %}
+
+{% block content %}
+    <div class="span-18 last prepend-top append-bottom" id="planet">
+        <div class="padding-content">
+        {% for feed in object_list %}
+            <div class="article">
+                <h2><a href="{{ feed.link }}">{{ feed.title }}</a></h2>
+                <span class="datetime">{{ feed.published_at }}</span>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}
