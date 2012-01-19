@@ -645,3 +645,18 @@ div.vote{
 #profile-edit tr:nth-child(even) td {
     background-color: transparent;
 }
+
+#planet h2 {
+    margin: 0;
+    font-size: 16px;
+}
+
+#planet h2 a {
+    text-decoration: none;
+    color: #487858;
+    font-weight: bold;
+}
+
+#planet h2 a:hover {
+    background-color: transparent;
+}

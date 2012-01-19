@@ -20,7 +20,6 @@ class Command(BaseCommand):
                 logging.debug('Failure: %s' % feed.feed_url)
             else:
                 new_posts = 0
-                entries = FeedItem.objects.all()
 
                 for entry in response.get('entries', []):
                     post = FeedItem(

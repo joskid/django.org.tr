@@ -10,9 +10,12 @@
     <div class="span-18 last prepend-top append-bottom" id="planet">
         <div class="padding-content">
             {% for feed in object_list %}
-                <div class="article">
+                <div class="feed append-bottom">
                     <h2><a href="{{ feed.link }}">{{ feed.title }}</a></h2>
-                    <span class="datetime">{{ feed.published_at }}</span>
+                    <span class="datetime">{{ feed.published_at }}</span> ~
+                    <span class="author">
+                        <a href="{{ feed.feed.link }}">{{ feed.feed.title }}</a>
+                    </span>
                 </div>
             {% empty %}
                 <p>Şimdilik bir girdi bulunmamaktadır. Daha sonra tekrar bekleriz.</p>
