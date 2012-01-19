@@ -106,7 +106,7 @@ except ImportError:
     }
 
 TEMPLATE_DEBUG = DEBUG
-ROOT = path.split(path.realpath(path.dirname(__file__)))[0]
+ROOT = path.realpath(path.dirname(__file__))
 
 MEDIA_ROOT = ''
 STATIC_ROOT = path.join(ROOT, '.epio_static')
