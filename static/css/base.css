@@ -502,6 +502,7 @@ div.vote{
 
 #content {
     background-color: #fff;
+    min-height: 300px;
 }
 
 #content h1 {
