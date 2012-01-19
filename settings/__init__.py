@@ -48,14 +48,13 @@ INSTALLED_APPS = (
     'social_auth',
     'easy_thumbnails',
     'south',
-    'django_push.subscriber',
 
     # Internal applications
     'apps.core',
     'apps.events',
+    'apps.planet',
     'apps.profiles',
     'apps.websites',
-    'apps.aggregator'
 )
 AUTHENTICATION_BACKENDS = (
     'social_auth.backends.facebook.FacebookBackend',
