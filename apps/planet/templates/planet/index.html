@@ -20,3 +20,14 @@
         </div>
     </div>
 {% endblock %}
+
+{% block sidebar %}
+    <h2>Yazarlar</h2>
+    <ul>
+        {% for author in author_list %}
+            <li>
+                <a href="{{ author.site_url }}">{{ author.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
