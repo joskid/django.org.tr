@@ -9,12 +9,14 @@
 {% block content %}
     <div class="span-18 last prepend-top append-bottom" id="planet">
         <div class="padding-content">
-        {% for feed in object_list %}
-            <div class="article">
-                <h2><a href="{{ feed.link }}">{{ feed.title }}</a></h2>
-                <span class="datetime">{{ feed.published_at }}</span>
-            </div>
-        {% endfor %}
+            {% for feed in object_list %}
+                <div class="article">
+                    <h2><a href="{{ feed.link }}">{{ feed.title }}</a></h2>
+                    <span class="datetime">{{ feed.published_at }}</span>
+                </div>
+            {% empty %}
+                <p>Şimdilik bir girdi bulunmamaktadır. Daha sonra tekrar bekleriz.</p>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
