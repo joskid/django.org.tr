@@ -19,16 +19,21 @@ class Command(BaseCommand):
             if not response.get('success', False):
                 logging.debug('Failure: %s' % feed.feed_url)
             else:
-                new_posts = 0
-
                 for entry in response.get('entries', []):
-                    post = FeedItem(
-                        feed=feed,
-                        title=entry.get('title'),
-                        content=entry.get('content'),
-                        link=entry.get('link'),
-                        published_at=entry.get('created'))
-                    post.save()
+                    try:
+                        feed_item = FeedItem.objects.get(
+                            feed=feed,
+                            title=entry.get('title'),
+                            link=entry.get('link'))
+                        feed_item.published_at = entry.get('created')
+                        feed_item.content = entry.get('content')
+                    except FeedItem.DoesNotExist:
+                        FeedItem.objects.create(
+                            feed=feed,
+                            title=entry.get('title'),
+                            link=entry.get('link'),
+                            published_at=entry.get('created'),
+                            content=entry.get('content'))
 
                 logging.debug('Success: %s' % feed.feed_url)
 

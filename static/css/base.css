@@ -558,6 +558,10 @@ div.vote{
     background-color: transparent;
 }
 
+#sidebar ul.planet-authors {
+    line-height: 22px;
+}
+
 .padding-horizontal {
     padding: 0 20px;
 }
@@ -662,6 +666,7 @@ div.vote{
 }
 
 a.rss {
+    margin-left: 5px;
     padding: 0 2px;
     color: #fff !important;
     font-weight: bold;

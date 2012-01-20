@@ -26,7 +26,7 @@
 
 {% block sidebar %}
     <h2>Yazarlar</h2>
-    <ul>
+    <ul class="planet-authors">
         {% for author in author_list %}
             <li>
                 <a href="{{ author.site_url }}">{{ author.title }}</a>
