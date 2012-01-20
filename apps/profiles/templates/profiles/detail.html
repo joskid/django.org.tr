@@ -36,6 +36,17 @@
         </div>
 
         <div class="span-18 prepend-top padding-content">
+            {% if profile.last_feeds %}
+                <h2>Son {{ profile.last_feeds|length }} Yazısı</h2>
+                <ul class="feeds">
+                    {% for f in profile.last_feeds %}
+                        <li>
+                            <a href="{{ f.link }}">{{ f.title }}</a>
+                            <span class="datetime">{{ f.published_at }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
             <h2>Topluluk Çalışmaları</h2>
             <p>Bu bolum henuz gelistirilme asamasindadir.</p>
         </div>

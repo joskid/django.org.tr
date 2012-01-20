@@ -8,7 +8,7 @@ class Feed(models.Model):
     feed_url = models.URLField(_("Feed URL"), unique=True, verify_exists=False)
     site_url = models.URLField(_("Site URL"), verify_exists=False)
     is_active = models.BooleanField(_("Is Active?"), default=True)
-    owner = models.ForeignKey(User, blank=True, null=True)
+    owner = models.OneToOneField(User, blank=True, null=True)
 
     def __unicode__(self):
         return self.title
