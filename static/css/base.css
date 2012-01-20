@@ -660,3 +660,15 @@ div.vote{
 #planet h2 a:hover {
     background-color: transparent;
 }
+
+a.rss {
+    padding: 0 2px;
+    color: #fff !important;
+    font-weight: bold;
+    background-color: #ff6600;
+    border: 1px outset #ff6600;
+}
+
+a.rss:hover {
+    background-color: #ff6600 !important;
+}

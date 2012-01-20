@@ -30,6 +30,7 @@
         {% for author in author_list %}
             <li>
                 <a href="{{ author.site_url }}">{{ author.title }}</a>
+                <a href="{{ author.feed_url }}" class="rss">RSS</a>
             </li>
         {% endfor %}
     </ul>
