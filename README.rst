@@ -17,11 +17,11 @@ If you need to a super user, create it with this command:
 
 Then create your `local_settings.py`. You can copy `local_settings.py-example`
 file from repository. Always use your local_settings.py file, so start
- development server as:
+development server as:
 
     python manage.py runserver_plus --settings=local_settings
 
 Authors
-=======
-Onur Mat, <omat_teknolab.org>
-Gökmen Görgen, <gokmen_alageek.com>
+-------
+* Onur Mat, <omat_teknolab.org>
+* Gökmen Görgen, <gokmen_alageek.com>
