@@ -8,48 +8,25 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         
-        # Deleting model 'FeedType'
-        db.delete_table('aggregator_feedtype')
-
-        # Deleting field 'Feed.feed_type'
-        db.delete_column('aggregator_feed', 'feed_type_id')
+        # Adding model 'Feed'
+        db.create_table('planet_feed', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('title', self.gf('django.db.models.fields.CharField')(max_length=250)),
+            ('feed_url', self.gf('django.db.models.fields.URLField')(unique=True, max_length=200)),
+            ('site_url', self.gf('django.db.models.fields.URLField')(max_length=200)),
+            ('is_active', self.gf('django.db.models.fields.BooleanField')(default=True)),
+            ('owner', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], null=True)),
+        ))
+        db.send_create_signal('planet', ['Feed'])
 
 
     def backwards(self, orm):
         
-        # Adding model 'FeedType'
-        db.create_table('aggregator_feedtype', (
-            ('slug', self.gf('django.db.models.fields.SlugField')(max_length=250, db_index=True)),
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=250)),
-            ('can_self_add', self.gf('django.db.models.fields.BooleanField')(default=True)),
-        ))
-        db.send_create_signal('aggregator', ['FeedType'])
-
-        # User chose to not deal with backwards NULL issues for 'Feed.feed_type'
-        raise RuntimeError("Cannot reverse this migration. 'Feed.feed_type' and its values cannot be restored.")
+        # Deleting model 'Feed'
+        db.delete_table('planet_feed')
 
 
     models = {
-        'aggregator.feed': {
-            'Meta': {'object_name': 'Feed'},
-            'feed_url': ('django.db.models.fields.URLField', [], {'unique': 'True', 'max_length': '500'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'is_defunct': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'owner': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'owned_feeds'", 'null': 'True', 'to': "orm['auth.User']"}),
-            'public_url': ('django.db.models.fields.URLField', [], {'max_length': '500'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '500'})
-        },
-        'aggregator.feeditem': {
-            'Meta': {'ordering': "('-date_modified',)", 'object_name': 'FeedItem'},
-            'date_modified': ('django.db.models.fields.DateTimeField', [], {}),
-            'feed': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['aggregator.Feed']"}),
-            'guid': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '500', 'db_index': 'True'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'link': ('django.db.models.fields.URLField', [], {'max_length': '500'}),
-            'summary': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '500'})
-        },
         'auth.group': {
             'Meta': {'object_name': 'Group'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -85,7 +62,16 @@ class Migration(SchemaMigration):
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
+        },
+        'planet.feed': {
+            'Meta': {'object_name': 'Feed'},
+            'feed_url': ('django.db.models.fields.URLField', [], {'unique': 'True', 'max_length': '200'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'is_active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
+            'owner': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']", 'null': 'True'}),
+            'site_url': ('django.db.models.fields.URLField', [], {'max_length': '200'}),
+            'title': ('django.db.models.fields.CharField', [], {'max_length': '250'})
         }
     }
 
-    complete_apps = ['aggregator']
+    complete_apps = ['planet']

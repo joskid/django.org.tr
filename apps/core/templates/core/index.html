@@ -26,7 +26,7 @@
                         {% for event in events %}
                             <li>
                                 <a href="{{ event.get_absolute_url }}">{{ event.title }}</a>
-                                <span class="date">{{ event.start|date:"j F Y, H:m"}}
+                                <span class="date">{{ event.start|date:"j F Y, H:m"}}</span>
                             </li>
                         {% empty %}
                             <li>Güncel bir etkinlik bulunamadı, tüm etkinliklerin listesine <a href="{% url event-index %}">buradan</a> bakabilirsiniz.</li>
@@ -34,9 +34,12 @@
                     </ul>
 
                     <h2>Django Türkiye'de yayınlanan son yazılar</h2>
-                    <ul class="linklist sitelist">
-                        {% for entry in entries %}
-                            <li><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></li>
+                    <ul class="feeds">
+                        {% for feed in feeds %}
+                            <li>
+                                <a href="{{ feed.link }}">{{ feed.title }}</a>
+                                <span class="datetime">{{ feed.published_at }}</span>
+                            </li>
                         {% empty %}
                             <li>Henüz bir yazı yayınlanmadı.</li>
                         {% endfor %}

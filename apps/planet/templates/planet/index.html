@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block billboard %}
+    Gezegen
+    <span>Türkçe bilen Django kullanıcılarının paylaşımlarını buradan takip edebilirsiniz.</span>
+{% endblock %}
+{% block title %}Gezegen{% endblock %}
+
+{% block content %}
+    <div class="span-18 last prepend-top append-bottom" id="planet">
+        <div class="padding-content">
+            {% for feed in object_list %}
+                <div class="feed append-bottom">
+                    <h2><a href="{{ feed.link }}">{{ feed.title }}</a></h2>
+                    <span class="datetime">{{ feed.published_at }}</span> ~
+                    <span class="author">
+                        <a href="{{ feed.feed.link }}">{{ feed.feed.title }}</a>
+                    </span>
+                </div>
+            {% empty %}
+                <p>Şimdilik bir girdi bulunmamaktadır. Daha sonra tekrar bekleriz.</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    <h2>Yazarlar</h2>
+    <ul class="planet-authors">
+        {% for author in author_list %}
+            <li>
+                <a href="{{ author.site_url }}">{{ author.title }}</a>
+                <a href="{{ author.feed_url }}" class="rss">RSS</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

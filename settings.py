@@ -2,6 +2,13 @@
 from os import path
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
+ADMINS = (
+    (u'Onur Mat', 'omat@teknolab.org'),
+    (u'Gökmen Görgen', 'gokmen@alageek.com')
+)
+
+MANAGERS = ADMINS
+
 MEDIA_URL = '/media/'
 TIME_ZONE = 'Europe/Istanbul'
 LANGUAGE_CODE = 'tr'
@@ -39,7 +46,6 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.sites',
     'django.contrib.staticfiles',
     'django.contrib.messages',
     'django.contrib.admin',
@@ -48,14 +54,13 @@ INSTALLED_APPS = (
     'social_auth',
     'easy_thumbnails',
     'south',
-    'django_push.subscriber',
 
     # Internal applications
     'apps.core',
     'apps.events',
+    'apps.planet',
     'apps.profiles',
     'apps.websites',
-    'apps.aggregator'
 )
 AUTHENTICATION_BACKENDS = (
     'social_auth.backends.facebook.FacebookBackend',
@@ -74,13 +79,7 @@ SOCIAL_AUTH_DEFAULT_USERNAME = 'djangocu'
 SOCIAL_AUTH_ENABLED_BACKENDS = ('google', 'facebook')
 AUTH_PROFILE_MODULE = 'profiles.Profile'
 
-# Pubsubhubbub settings
-PUSH_HUB = 'https://superfeedr.com/hubbub'
-PUSH_CREDENTIALS = 'apps.aggregator.utils.push_credentials'
-PUSH_SSL_CALLBACK = True
-
 ## Local Settings
-from settings.default import *
 try:
     from bundle_config import config
 
@@ -97,10 +96,17 @@ try:
     }
 
 except ImportError:
-    pass
+    DEBUG = True
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'sqlite.db'
+        }
+    }
 
-# FIXME: use settings_local.py, it's dirty solution.
-try:
-    from settings.local import *
-except ImportError:
-    pass
+TEMPLATE_DEBUG = DEBUG
+ROOT = path.realpath(path.dirname(__file__))
+
+MEDIA_ROOT = ''
+STATIC_ROOT = path.join(ROOT, '.epio_static')
+STATICFILES_DIRS = (path.join(ROOT, 'static'),)

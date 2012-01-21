@@ -1,0 +1,40 @@
+from settings import *
+
+SECRET_KEY = 'please-generate-your-secret-key'
+
+# TWITTER_CONSUMER_KEY = ''
+# TWITTER_CONSUMER_SECRET = ''
+# FACEBOOK_APP_ID = ''
+# FACEBOOK_API_SECRET = ''
+# LINKEDIN_CONSUMER_KEY = ''
+# LINKEDIN_CONSUMER_SECRET = ''
+# ORKUT_CONSUMER_KEY = ''
+# ORKUT_CONSUMER_SECRET = ''
+# GOOGLE_CONSUMER_KEY = ''
+# GOOGLE_CONSUMER_SECRET = ''
+# GOOGLE_OAUTH2_CLIENT_ID = ''
+# GOOGLE_OAUTH2_CLIENT_SECRET = ''
+# FOURSQUARE_CONSUMER_KEY = ''
+# FOURSQUARE_CONSUMER_SECRET = ''
+# GITHUB_APP_ID = ''
+# GITHUB_API_SECRET = ''
+# DROPBOX_APP_ID = ''
+# DROPBOX_API_SECRET = ''
+# FLICKR_APP_ID = ''
+# FLICKR_API_SECRET = ''
+
+# if DEBUG:
+#     MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+#     INSTALLED_APPS += ('django_extensions', 'debug_toolbar')
+#     INTERNAL_IPS = ('127.0.0.1',)
+#     DEBUG_TOOLBAR_PANELS = (
+#         'debug_toolbar.panels.version.VersionDebugPanel',
+#         'debug_toolbar.panels.timer.TimerDebugPanel',
+#         'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
+#         'debug_toolbar.panels.headers.HeaderDebugPanel',
+#         'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
+#         'debug_toolbar.panels.template.TemplateDebugPanel',
+#         'debug_toolbar.panels.sql.SQLDebugPanel',
+#         'debug_toolbar.panels.signals.SignalDebugPanel',
+#         'debug_toolbar.panels.logger.LoggingPanel',
+#     )

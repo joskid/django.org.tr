@@ -10,12 +10,11 @@ urlpatterns = patterns(
     '',
 
     url(r'^', include('apps.core.urls')),
-    url(r'^planet/', include('apps.aggregator.urls')),
     url(r'^websites/', include('apps.websites.urls')),
     url(r'^events/', include('apps.events.urls')),
+    url(r'^planet/', include('apps.planet.urls')),
     url(r'^profile/', include('apps.profiles.urls')),
     url(r'^social/', include('social_auth.urls')),
-    url(r'^subscriber/', include('django_push.subscriber.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
 urlpatterns += staticfiles_urlpatterns()
