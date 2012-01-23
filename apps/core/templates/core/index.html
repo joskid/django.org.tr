@@ -77,13 +77,17 @@
 {% block sidebar%}
     {{ block.super }}
 
-    <h2>Kısa yollar</h2>
+    <h2>Kısayollar</h2>
 
-    <ul class="linklist">
-        <li class="button-download">
-            <a href="http://www.djangoproject.com/download/"><strong>İndirin</strong></a>
-        </li>
-    </ul>
+    {% if blogrolls %}
+        <ul class="blogroll">
+            {% for blogroll in blogrolls %}
+                <li><a href="{{ blogroll.url }}">{{ blogroll.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Henüz eklenmiş bir kısayol yok.</p>
+    {% endif %}
 
     <p>
         Django resmi sitesine <a href="http://www.djangoproject.com/">buradan</a> ulaşabilirsiniz.
