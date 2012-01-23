@@ -681,3 +681,34 @@ a.rss:hover {
 ul.feeds a {
     display: block;
 }
+
+#network a {
+    margin-right: 5px;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background-image: url('/static/images/network_sprite.png');
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+}
+
+#network a:hover {
+    opacity: 1.0;
+}
+
+#network a.facebook {
+    background-position: -120px 0;
+}
+
+#network a.google {
+    background-position: -1560px 0;
+}
+
+#network a.tumblr {
+    background-position: -840px 0;
+}
+
+#network span {
+    display: none;
+}
