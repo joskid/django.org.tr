@@ -80,6 +80,7 @@ SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
 SOCIAL_AUTH_DEFAULT_USERNAME = 'djangocu'
 SOCIAL_AUTH_ENABLED_BACKENDS = ('google', 'facebook', 'tumblr')
 AUTH_PROFILE_MODULE = 'profiles.Profile'
+SOCIAL_AUTH_IMPORT_BACKENDS = ('tumblr_auth',)
 
 ## Local Settings
 try:
