@@ -586,6 +586,15 @@ div.vote{
     margin-bottom: 5px;
 }
 
+#profiles a.edit {
+    display: block;
+}
+
+#profiles span.auth-provider {
+    font-size: 10px;
+    color: #999;
+}
+
 #profiles .profile {
     padding: 10px;
     height: 60px;
