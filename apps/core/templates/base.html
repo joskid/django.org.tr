@@ -16,7 +16,6 @@
     <![endif]-->
     <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css" type="text/css" />
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 </head>
 
 <body class="default">
@@ -62,19 +61,26 @@
                             <p>
                                 Kendinizi Django dünyasında görüyorsanız siz de <a href="#" onclick="$('#login-div').show('slow');">katılın</a>.
                             </p>
-                            <div id="login-div" style="display:none; text-align:center;">
-                                <div style="font-size:8pt;">
-                                    Google veya Facebook kullanıcınızla giriş yapabilirsiniz
-                                </div>
-                                <div style="padding-top:6px;">
-                                    <a href="{% url socialauth_begin backend="google" %}">
-                                        <img src="{{ STATIC_URL }}/images/google.gif" />
-                                    </a>
-                                    &nbsp;
-                                    <a href="{% url socialauth_begin backend="facebook" %}">
-                                        <img src="{{ STATIC_URL }}/images/facebook.gif" />
-                                    </a>
-                                </div>
+
+                            <div id="network" class="append-bottom">
+                                <a href='{% url socialauth_begin backend="facebook" %}'
+                                   class="facebook" title="facebook">
+                                    <span>facebook</span>
+                                </a>
+                                {% comment %}
+                                <a href='{% url socialauth_begin backend="twitter" %}'
+                                   class="twitter" title="twitter">
+                                    <span>twitter</span>
+                                </a>
+                                {% endcomment %}
+                                <a href='{% url socialauth_begin backend="google" %}'
+                                   class="google" title="google">
+                                    <span>google</span>
+                                </a>
+                                <a href='{% url socialauth_begin backend="tumblr" %}'
+                                   class="tumblr" title="tumblr">
+                                    <span>tumblr</span>
+                                </a>
                             </div>
                         {% endif %}
                     {% endblock %}
@@ -92,19 +98,18 @@
         </div>
 
         <script type="text/javascript">
-        
+
           var _gaq = _gaq || [];
           _gaq.push(['_setAccount', 'UA-1026111-12']);
           _gaq.push(['_trackPageview']);
-        
+
           (function() {
             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
           })();
-        
-        </script>
 
+        </script>
     </div>
 </body>
 

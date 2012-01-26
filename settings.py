@@ -52,6 +52,7 @@ INSTALLED_APPS = (
 
     # Third party applications
     'social_auth',
+    'tumblr_auth',
     'easy_thumbnails',
     'south',
 
@@ -65,6 +66,7 @@ INSTALLED_APPS = (
 AUTHENTICATION_BACKENDS = (
     'social_auth.backends.facebook.FacebookBackend',
     'social_auth.backends.google.GoogleBackend',
+    'tumblr_auth.backend.TumblrBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -76,8 +78,9 @@ SOCIAL_AUTH_ERROR_KEY = 'social_errors'
 SOCIAL_AUTH_COMPLETE_URL_NAME = 'socialauth_complete'
 SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
 SOCIAL_AUTH_DEFAULT_USERNAME = 'djangocu'
-SOCIAL_AUTH_ENABLED_BACKENDS = ('google', 'facebook')
+SOCIAL_AUTH_ENABLED_BACKENDS = ('google', 'facebook', 'tumblr')
 AUTH_PROFILE_MODULE = 'profiles.Profile'
+SOCIAL_AUTH_IMPORT_BACKENDS = ('tumblr_auth',)
 
 ## Local Settings
 try:

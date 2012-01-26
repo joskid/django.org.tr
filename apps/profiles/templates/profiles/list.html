@@ -16,11 +16,28 @@
                         <img src="{% gravatar item.user.email 60 "g" "mm" %}" class="left" />
                     {% endif %}
                     <a href="{{ item.get_absolute_url }}">
-                        <h4>{{ item.user.get_full_name }}</h4>
+                        <h4>
+                            {% if item.user.get_full_name %}
+                                {{ item.user.get_full_name }}
+                            {% else %}
+                                {{ item.user.username }}
+                            {% endif %}
+                        </h4>
                     </a>
                     {% if item == request.user.get_profile %}
-                        <a href="{% url profile_form %}">düzenle</a>
+                        <a href="{% url profile_form %}" class="edit">
+                            düzenle
+                        </a>
                     {% endif %}
+                    {% with social_auth=item.user.social_auth.all %}
+                        {% if social_auth %}
+                            <span class="auth-provider">
+                                {% for auth in social_auth %}
+                                    {{ auth.provider }}
+                                {% endfor %}
+                            </span>
+                        {% endif %}
+                    {% endwith %}
                 </div>
             </div>
         {% endfor %}
