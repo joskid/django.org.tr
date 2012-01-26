@@ -63,16 +63,22 @@
                             </p>
 
                             <div id="network" class="append-bottom">
-                                <a href='{% url socialauth_begin backend="facebook" %}' class="facebook">
+                                <a href='{% url socialauth_begin backend="facebook" %}'
+                                   class="facebook" title="facebook">
                                     <span>facebook</span>
                                 </a>
-                                <a href='{% url socialauth_begin backend="twitter" %}' class="twitter">
+                                {% comment %}
+                                <a href='{% url socialauth_begin backend="twitter" %}'
+                                   class="twitter" title="twitter">
                                     <span>twitter</span>
                                 </a>
-                                <a href='{% url socialauth_begin backend="google" %}' class="google">
+                                {% endcomment %}
+                                <a href='{% url socialauth_begin backend="google" %}'
+                                   class="google" title="google">
                                     <span>google</span>
                                 </a>
-                                <a href='{% url socialauth_begin backend="tumblr" %}' class="tumblr">
+                                <a href='{% url socialauth_begin backend="tumblr" %}'
+                                   class="tumblr" title="tumblr">
                                     <span>tumblr</span>
                                 </a>
                             </div>
