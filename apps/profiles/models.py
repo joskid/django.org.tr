@@ -42,6 +42,9 @@ class Profile(models.Model):
 
         return feed.feeditems.all()[:LAST_FEEDS_COUNT]
 
+    class Meta:
+        ordering = ('id',)
+
 
 def create_profile(sender, instance, created, **kwargs):
     if created:
