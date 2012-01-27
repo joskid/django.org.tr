@@ -11,7 +11,7 @@
             <div class="span-6{% cycle "" "" " last" %}">
                 <div class="profile">
                     {% if item.photo %}
-                        <img src="{% thumbnail item.photo 60x60 %}" class="left" />
+                        <img src="{% thumbnail item.photo 60x60 crop=smart %}" class="left" />
                     {% else %}
                         <img src="{% gravatar item.user.email 60 "g" "mm" %}" class="left" />
                     {% endif %}

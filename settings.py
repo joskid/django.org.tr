@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from os import getenv
 from os import path
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
@@ -110,6 +111,14 @@ except ImportError:
 TEMPLATE_DEBUG = DEBUG
 ROOT = path.realpath(path.dirname(__file__))
 
-MEDIA_ROOT = ''
 STATIC_ROOT = path.join(ROOT, '.epio_static')
 STATICFILES_DIRS = (path.join(ROOT, 'static'),)
+
+# NOTE: Be careful! You should override this function if you keep your media
+#       files. It's configured for easy deployment.
+DATA_DIR = getenv('EPIO_DATA_DIRECTORY')
+if not DATA_DIR:
+    from tempfile import gettempdir
+    DATA_DIR = gettempdir()
+
+MEDIA_ROOT = path.join(DATA_DIR, 'media')
