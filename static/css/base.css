@@ -4,6 +4,7 @@ html, body{
 
 body {
     font-family: "Trebuchet MS",sans-serif;
+    color: #595959;
 }
 
 hr,
@@ -722,4 +723,29 @@ ul.feeds a {
 
 #network span {
     display: none;
+}
+
+/* Scrollbar style for Webkit */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px
+}
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+    display:none;
+    width:0px;
+    height:0px
+}
+
+::-webkit-scrollbar-track:corner-present,
+::-webkit-scrollbar-track-piece,
+::-webkit-scrollbar-corner,
+::-webkit-resizer {
+    background-color: #234F32;
+}
+
+::-webkit-scrollbar-thumb:vertical,
+::-webkit-scrollbar-thumb:horizontal {
+    background-color: #487858;
 }
