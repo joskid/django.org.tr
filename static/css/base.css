@@ -602,6 +602,8 @@ div.vote{
 
 #profiles .profile img {
     padding-right: 10px;
+    width: 60px;
+    height: 60px;
 }
 
 #profiles .profile a {
