@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import re
 
@@ -60,4 +60,3 @@ def test():
 
 if __name__ == '__main__':
     print slugify(u'ÖÇŞİĞÜ öçşığü')
-
