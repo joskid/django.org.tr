@@ -1,16 +1,24 @@
 # -*- coding: utf-8 -*-
-from os import getenv
 from os import path
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+
+DEBUG = False
+TEMPLATE_DEBUG = DEBUG
+ROOT = path.realpath(path.dirname(__file__))
 
 ADMINS = (
     (u'Onur Mat', 'omat@teknolab.org'),
     (u'Gökmen Görgen', 'gokmen@alageek.com')
 )
-
 MANAGERS = ADMINS
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'sqlite.db'
+    }
+}
 MEDIA_URL = '/media/'
+MEDIA_ROOT = path.join(ROOT, '.media')
 TIME_ZONE = 'Europe/Istanbul'
 LANGUAGE_CODE = 'tr'
 SITE_ID = 1
@@ -18,6 +26,8 @@ DEFAULT_FROM_EMAIL = 'Django <django@django.org.tr>'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_SUBJECT_PREFIX = '[django-tr] '
 STATIC_URL = '/static/'
+STATIC_ROOT = path.join(ROOT, '.static')
+STATICFILES_DIRS = (path.join(ROOT, 'static'),)
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -37,7 +47,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 ROOT_URLCONF = 'urls'
-TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
+TEMPLATE_CONTEXT_PROCESSORS += (
    "django.core.context_processors.request",
    "context_processors.current_site",
    "context_processors.current_page",
@@ -86,40 +96,6 @@ SOCIAL_AUTH_IMPORT_BACKENDS = ('tumblr_auth',)
 
 ## Local Settings
 try:
-    from bundle_config import config
-
-    DEBUG = False
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': config['postgres']['database'],
-            'USER': config['postgres']['username'],
-            'PORT': int(config['postgres']['port']),
-            'HOST': config['postgres']['host'],
-            'PASSWORD': config['postgres']['password']
-        }
-    }
-
+    from local_settings import *
 except ImportError:
-    DEBUG = True
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': 'sqlite.db'
-        }
-    }
-
-TEMPLATE_DEBUG = DEBUG
-ROOT = path.realpath(path.dirname(__file__))
-
-STATIC_ROOT = path.join(ROOT, '.epio_static')
-STATICFILES_DIRS = (path.join(ROOT, 'static'),)
-
-# NOTE: Be careful! You should override this function if you keep your media
-#       files. It's configured for easy deployment.
-DATA_DIR = getenv('EPIO_DATA_DIRECTORY')
-if not DATA_DIR:
-    from tempfile import gettempdir
-    DATA_DIR = gettempdir()
-
-MEDIA_ROOT = path.join(DATA_DIR, 'media')
+    pass
