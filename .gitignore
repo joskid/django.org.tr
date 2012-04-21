@@ -1,6 +1,6 @@
 ## DjangoTR
 sqlite.db
-.epio_static/
+venv/
 
 ## Django
 *.log
@@ -36,16 +36,3 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
-
-## Emacs
-*~
-\#*\#
-/.emacs.desktop
-/.emacs.desktop.lock
-.elc
-auto-save-list
-tramp
-.\#*
-
-## PyCharm
-/.idea
