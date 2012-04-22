@@ -1,14 +1,24 @@
+from django.conf.global_settings import MIDDLEWARE_CLASSES
+from settings_default import INSTALLED_APPS
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 SECRET_KEY = 'please-generate-your-secret-key'
 
-FACEBOOK_APP_ID = ''
-FACEBOOK_API_SECRET = ''
-TUMBLR_CONSUMER_KEY = ''
-TUMBLR_CONSUMER_SECRET = ''
-TWITTER_CONSUMER_KEY = ''
-TWITTER_CONSUMER_SECRET = ''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'sqlite.db',
+    }
+}
+
+# FACEBOOK_APP_ID = ''
+# FACEBOOK_API_SECRET = ''
+# TUMBLR_CONSUMER_KEY = ''
+# TUMBLR_CONSUMER_SECRET = ''
+# TWITTER_CONSUMER_KEY = ''
+# TWITTER_CONSUMER_SECRET = ''
 
 
 MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
