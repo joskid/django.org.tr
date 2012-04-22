@@ -4,7 +4,7 @@ from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
-ROOT = path.realpath(path.dirname(__file__))
+ROOT = path.split(path.realpath(path.dirname(__file__)))[0]
 
 ADMINS = (
     (u'Onur Mat', 'omat@teknolab.org'),
@@ -95,8 +95,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS += (

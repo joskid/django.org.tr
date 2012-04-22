@@ -1,17 +1,21 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls.defaults import include
+from django.conf.urls.defaults import patterns
+from django.conf.urls.defaults import url
+from django.conf import settings
+from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+admin.autodiscover()
+urlpatterns = patterns(
+    '',
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'project.views.home', name='home'),
-    # url(r'^project/', include('project.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include('apps.core.urls')),
+    url(r'^websites/', include('apps.websites.urls')),
+    url(r'^events/', include('apps.events.urls')),
+    url(r'^planet/', include('apps.planet.urls')),
+    url(r'^profile/', include('apps.profiles.urls')),
+    url(r'^social/', include('social_auth.urls')),
+    url(r'^admin/', include(admin.site.urls)),
 )
+
+urlpatterns += staticfiles_urlpatterns()
