@@ -129,6 +129,7 @@ INSTALLED_APPS = (
     'tumblr_auth',
     'easy_thumbnails',
     'south',
+    'gunicorn',
 
     # Internal applications
     'apps.core',
